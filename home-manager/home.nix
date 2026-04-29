@@ -57,9 +57,15 @@
     unstablePkgs.go-task
   ];
 
-  # Enable home-manager and git
-  programs.home-manager.enable = true;
-  programs.git.enable = true;
+
+  programs = {
+    git.enable = true;
+    home-manager.enable = true;
+    go = {
+      enable = true;
+      package = pkgs.unstablePkgs.go;
+    };
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.11";

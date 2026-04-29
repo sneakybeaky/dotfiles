@@ -20,3 +20,9 @@ tasks:
     desc: Apply Nix configuration
     cmds:
       - home-manager switch --flake .#{{.USERNAME}}@{{.HOSTNAME}} -b backup
+
+  update:
+    desc: Update packages
+    cmds:
+      - nix flake update
+      - task: apply
