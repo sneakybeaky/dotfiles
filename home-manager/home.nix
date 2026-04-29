@@ -26,6 +26,7 @@
       inputs.self.overlays.additions
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
+      inputs.llm-agents.overlays.default
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -55,6 +56,7 @@
   # home.packages = with pkgs; [ steam ];
   home.packages = with pkgs; [
     unstablePkgs.go-task
+    llm-agents.claude-code
   ];
 
 

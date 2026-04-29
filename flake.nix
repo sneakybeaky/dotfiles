@@ -1,6 +1,11 @@
 {
   description = "Your new nix config";
 
+  nixConfig = {
+      extra-substituters = [ "https://cache.numtide.com" ];
+      extra-trusted-public-keys = [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ];
+  };
+
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
@@ -12,6 +17,9 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # LLM Agents
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs = {
