@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+vars:
+  GREETING: Hello, world!
+  USERNAME:
+    sh: whoami
+  HOSTNAME:
+    sh: hostname
+
+tasks:
+  default:
+    desc: List all tasks
+    cmds:
+      - task -l
+    silent: true
+
+  apply:
+    desc: Apply Nix configuration
+    cmds:
+      - home-manager switch --flake .#{{.USERNAME}}@{{.HOSTNAME}} -b backup
