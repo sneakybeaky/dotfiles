@@ -9,7 +9,8 @@
     atuin
     axel
     bat
-    pkgsUnstable.devenv
+    devenv
+    devbox
     dig
     eza
     glow
