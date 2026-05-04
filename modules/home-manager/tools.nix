@@ -1,0 +1,26 @@
+{
+  pkgs,
+  pkgsUnstable,
+  ...
+}:
+{
+  home.packages = with pkgs; [
+    asciinema
+    atuin
+    axel
+    bat
+    pkgsUnstable.devenv
+    dig
+    eza
+    glow
+    gnumake
+    jq
+    mkcert
+    ncdu
+    ngrok
+    ripgrep
+    tldr
+    unrar
+    wget
+  ];
+}
