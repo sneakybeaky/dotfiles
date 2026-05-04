@@ -39,6 +39,16 @@
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
+
+    # Helper function to create pkgsUnstable for any system
+    mkPkgsUnstable =
+      system:
+      import inputs.nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+
   in {
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
@@ -76,7 +86,10 @@
       "jon@Jons-MacBook-Pro-72.local" = home-manager.lib.homeManagerConfiguration {
         # Home-manager requires 'pkgs' instance
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # FIXME replace x86_64-linux with your architecture
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {
+          inherit inputs;
+          pkgsUnstable = mkPkgsUnstable "aarch64-darwin";
+        };
         modules = [
           # > Our main home-manager configuration file <
           ./home-manager/home.nix

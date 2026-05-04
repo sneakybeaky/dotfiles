@@ -5,13 +5,14 @@
   lib,
   config,
   pkgs,
+  pkgsUnstable,
   ...
 }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # inputs.self.homeManagerModules.example
-    inputs.self.homeManagerModules.tools
+    (inputs.self.homeManagerModules.tools { inherit pkgs pkgsUnstable;})
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
