@@ -4,4 +4,5 @@
   # List your module files here
   # my-module = import ./my-module.nix;
   tools = import ./tools.nix;
+  ai = import ./ai.nix;
 }
