@@ -5,7 +5,6 @@
 {
   home.packages = with pkgsUnstable; [
     asciinema
-    atuin
     axel
     bat
     devenv

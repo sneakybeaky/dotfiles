@@ -7,4 +7,5 @@
   ai = import ./ai.nix;
   starship = import ./starship.nix;
   fish = import ./fish.nix;
+  atuin = import ./atuin.nix;
 }
