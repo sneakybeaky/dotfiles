@@ -6,4 +6,5 @@
   tools = import ./tools.nix;
   ai = import ./ai.nix;
   starship = import ./starship.nix;
+  fish = import ./fish.nix;
 }
