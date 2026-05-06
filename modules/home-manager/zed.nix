@@ -5,7 +5,6 @@
 
   programs.zed-editor = {
     enable = true;
-    #package = zedpkgs.packages.${pkgs.stdenv.hostPlatform.system}.default;
     package = pkgsUnstable.zed-editor;
 
     mutableUserSettings = true;
