@@ -89,8 +89,10 @@
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      "jon@Jons-MacBook-Pro-72.local" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations = let
+
+      # Default home-manager configuration for MacBooks
+      defaultMac = home-manager.lib.homeManagerConfiguration {
         # Home-manager requires 'pkgs' instance
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         extraSpecialArgs = {
@@ -101,17 +103,10 @@
           ./home-manager/home.nix
         ];
       };
-      "jon@Jons-M1-MacBook-Pro.local" = home-manager.lib.homeManagerConfiguration {
-        # Home-manager requires 'pkgs' instance
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-        extraSpecialArgs = {
-          inherit inputs;
-          pkgsUnstable = mkPkgsUnstable "aarch64-darwin";
-        };
-        modules = [
-          ./home-manager/home.nix
-        ];
-      };
+
+    in {
+      "jon@Jons-MacBook-Pro-72.local" = defaultMac;
+      "jon@Jons-M1-MacBook-Pro.local" = defaultMac;
     };
   };
 }
