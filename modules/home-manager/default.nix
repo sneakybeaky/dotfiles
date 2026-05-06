@@ -8,4 +8,5 @@
   starship = import ./starship.nix;
   fish = import ./fish.nix;
   atuin = import ./atuin.nix;
+  zed = import ./zed.nix;
 }

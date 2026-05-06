@@ -2,8 +2,16 @@
   description = "Your new nix config";
 
   nixConfig = {
-      extra-substituters = [ "https://cache.numtide.com" ];
-      extra-trusted-public-keys = [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ];
+      extra-substituters = [
+        "https://cache.numtide.com"
+        "https://zed.cachix.org"
+        "https://cache.garnix.io"
+      ];
+      extra-trusted-public-keys = [
+        "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+        "zed.cachix.org-1:/pHQ6dpMsAZk2DiP4WCL0p9YDNKWj2Q5FL20bNmw1cU="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+      ];
   };
 
   inputs = {
