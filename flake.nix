@@ -82,16 +82,25 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      # FIXME replace with your username@hostname
       "jon@Jons-MacBook-Pro-72.local" = home-manager.lib.homeManagerConfiguration {
         # Home-manager requires 'pkgs' instance
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin; # FIXME replace x86_64-linux with your architecture
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         extraSpecialArgs = {
           inherit inputs;
           pkgsUnstable = mkPkgsUnstable "aarch64-darwin";
         };
         modules = [
-          # > Our main home-manager configuration file <
+          ./home-manager/home.nix
+        ];
+      };
+      "jon@Jons-M1-MacBook-Pro.local" = home-manager.lib.homeManagerConfiguration {
+        # Home-manager requires 'pkgs' instance
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        extraSpecialArgs = {
+          inherit inputs;
+          pkgsUnstable = mkPkgsUnstable "aarch64-darwin";
+        };
+        modules = [
           ./home-manager/home.nix
         ];
       };

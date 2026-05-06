@@ -14,6 +14,7 @@
     # inputs.self.homeManagerModules.example
     (inputs.self.homeManagerModules.tools { inherit pkgs pkgsUnstable;})
     (inputs.self.homeManagerModules.ai { inherit pkgs; llm-agents = inputs.llm-agents;})
+    (inputs.self.homeManagerModules.starship { inherit pkgs pkgsUnstable;})
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
