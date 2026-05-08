@@ -10,4 +10,5 @@
   atuin = import ./atuin.nix;
   zed = import ./zed.nix;
   eza = import ./eza.nix;
+  direnv = import ./direnv.nix;
 }
