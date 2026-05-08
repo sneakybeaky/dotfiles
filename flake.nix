@@ -48,15 +48,6 @@
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
 
-    # Helper function to create pkgsUnstable for any system
-    mkPkgsUnstable =
-      system:
-      import inputs.nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
-
   in {
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
@@ -97,7 +88,6 @@
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         extraSpecialArgs = {
           inherit inputs;
-          pkgsUnstable = mkPkgsUnstable "aarch64-darwin";
         };
         modules = [
           ./home-manager/home.nix
