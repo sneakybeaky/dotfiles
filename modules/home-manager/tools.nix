@@ -7,6 +7,7 @@
     axel
     devenv
     devbox
+    dix
     dig
     duf
     glow

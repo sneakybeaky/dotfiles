@@ -26,3 +26,9 @@ tasks:
     cmds:
       - nix flake update
       - task: apply
+      - task: changed
+
+  changed:
+    desc: Show what changed with last update
+    cmds:
+      - home-manager generations | head -n 2 | cut -d' ' -f 7 | tac | xargs   nix store diff-closures
