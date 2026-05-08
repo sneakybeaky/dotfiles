@@ -10,7 +10,7 @@
     devenv
     devbox
     dig
-    eza
+    duf
     glow
     gnumake
     jq
