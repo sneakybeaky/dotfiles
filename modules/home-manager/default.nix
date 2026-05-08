@@ -9,4 +9,5 @@
   fish = import ./fish.nix;
   atuin = import ./atuin.nix;
   zed = import ./zed.nix;
+  eza = import ./eza.nix;
 }
