@@ -1,12 +1,11 @@
 {
-  llm-agents,
   pkgs,
   ...
 }:
 {
   programs.claude-code = {
     enable = true;
-    package = llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code;
+    package = pkgs.llm-agents.claude-code;
 
     settings = {
 
@@ -59,7 +58,7 @@
 
   # Additional AI tools
   home.packages = [
-    llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.crush
+    pkgs.llm-agents.crush
   ];
 
 }
