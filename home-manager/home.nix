@@ -12,14 +12,14 @@
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # inputs.self.homeManagerModules.example
-    (inputs.self.homeManagerModules.tools { inherit pkgs pkgsUnstable;})
+    (inputs.self.homeManagerModules.tools { inherit pkgs;})
     (inputs.self.homeManagerModules.ai { inherit pkgs; llm-agents = inputs.llm-agents;})
-    (inputs.self.homeManagerModules.starship { inherit pkgs pkgsUnstable;})
-    (inputs.self.homeManagerModules.fish { inherit pkgsUnstable;})
-    (inputs.self.homeManagerModules.atuin { inherit pkgsUnstable;})
-    (inputs.self.homeManagerModules.zed { inherit pkgsUnstable;})
-    (inputs.self.homeManagerModules.eza { inherit pkgsUnstable;})
-    (inputs.self.homeManagerModules.direnv { inherit pkgsUnstable;})
+    (inputs.self.homeManagerModules.starship { inherit pkgs;})
+    (inputs.self.homeManagerModules.fish { inherit pkgs;})
+    (inputs.self.homeManagerModules.atuin { inherit pkgs;})
+    (inputs.self.homeManagerModules.zed { inherit pkgs;})
+    (inputs.self.homeManagerModules.eza { inherit pkgs;})
+    (inputs.self.homeManagerModules.direnv { inherit pkgs;})
     (inputs.self.homeManagerModules.television { inherit pkgs;})
     (inputs.self.homeManagerModules.fd { inherit pkgs;})
     (inputs.self.homeManagerModules.bat { inherit pkgs;})

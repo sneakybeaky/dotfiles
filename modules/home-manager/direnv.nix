@@ -1,14 +1,13 @@
 {
-  pkgsUnstable,
-  ...
-}: {
+  pkgs,
+  ...}: {
   programs.direnv = {
     enable = true;
-    package = pkgsUnstable.direnv;
+    package = pkgs.unstablePkgs.direnv;
 
     mise = {
       enable = true;
-      package = pkgsUnstable.mise;
+      package = pkgs.unstablePkgs.mise;
     };
   };
 }

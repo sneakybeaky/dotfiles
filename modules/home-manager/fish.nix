@@ -1,10 +1,9 @@
 {
-  pkgsUnstable,
-  ...
-}: {
+  pkgs,
+  ...}: {
   programs.fish = {
     enable = true;
-    package = pkgsUnstable.fish;
+    package = pkgs.unstablePkgs.fish;
 
     shellInit = # fish
       ''

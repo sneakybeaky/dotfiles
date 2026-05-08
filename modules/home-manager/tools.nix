@@ -1,9 +1,8 @@
 {
-  pkgsUnstable,
-  ...
-}:
+  pkgs,
+  ...}:
 {
-  home.packages = with pkgsUnstable; [
+  home.packages = with pkgs.unstablePkgs; [
     asciinema
     axel
     devenv

@@ -1,10 +1,9 @@
 {
-  pkgsUnstable,
-  ...
-}: {
+  pkgs,
+  ...}: {
   programs.eza = {
     enable = true;
-    package = pkgsUnstable.eza;
+    package = pkgs.unstablePkgs.eza;
     enableFishIntegration = true;
   };
 }
