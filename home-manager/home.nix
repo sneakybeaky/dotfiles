@@ -20,6 +20,9 @@
     (inputs.self.homeManagerModules.zed { inherit pkgsUnstable;})
     (inputs.self.homeManagerModules.eza { inherit pkgsUnstable;})
     (inputs.self.homeManagerModules.direnv { inherit pkgsUnstable;})
+    (inputs.self.homeManagerModules.television { inherit pkgs;})
+    (inputs.self.homeManagerModules.fd { inherit pkgs;})
+    (inputs.self.homeManagerModules.bat { inherit pkgs;})
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -65,7 +68,6 @@
   # home.packages = with pkgs; [ steam ];
   home.packages = with pkgs; [
     unstablePkgs.go-task
-    llm-agents.claude-code
   ];
 
 

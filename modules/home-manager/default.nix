@@ -11,4 +11,7 @@
   zed = import ./zed.nix;
   eza = import ./eza.nix;
   direnv = import ./direnv.nix;
+  television = import ./television.nix;
+  bat = import ./bat.nix;
+  fd = import ./fd.nix;
 }

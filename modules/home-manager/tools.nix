@@ -6,7 +6,6 @@
   home.packages = with pkgsUnstable; [
     asciinema
     axel
-    bat
     devenv
     devbox
     dig
