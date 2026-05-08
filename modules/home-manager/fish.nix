@@ -18,6 +18,9 @@
         set -x -U LESS_TERMCAP_us (printf "\e[01;32m")
         set -x -U MANROFFOPT "-c"
 
+        set -x -U EDITOR "zeditor --wait"
+        set -x -U VISUAL "zeditor --wait"
+
         fish_default_key_bindings
 
         if string match -qe -- "/dev/pts/" (tty)
