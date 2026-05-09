@@ -10,6 +10,7 @@
 
     shellInit = # fish
       ''
+        fish_add_path $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin
         set -x -U EDITOR "zeditor --wait"
         set -x -U VISUAL "zeditor --wait"
 
