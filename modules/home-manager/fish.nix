@@ -1,30 +1,19 @@
 {
   pkgs,
   ...}: {
+
+  home.shell.enableFishIntegration = true;
+
   programs.fish = {
     enable = true;
     package = pkgs.unstablePkgs.fish;
 
     shellInit = # fish
       ''
-        set -U fish_greeting ""
-
-        set -x -U LESS_TERMCAP_md (printf "\e[01;31m")
-        set -x -U LESS_TERMCAP_me (printf "\e[0m")
-        set -x -U LESS_TERMCAP_se (printf "\e[0m")
-        set -x -U LESS_TERMCAP_so (printf "\e[01;44;30m")
-        set -x -U LESS_TERMCAP_ue (printf "\e[0m")
-        set -x -U LESS_TERMCAP_us (printf "\e[01;32m")
-        set -x -U MANROFFOPT "-c"
-
         set -x -U EDITOR "zeditor --wait"
         set -x -U VISUAL "zeditor --wait"
 
         fish_default_key_bindings
-
-        if string match -qe -- "/dev/pts/" (tty)
-          alias ssh="kitty +kitten ssh"
-        end
       '';
 
       interactiveShellInit =

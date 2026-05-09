@@ -22,6 +22,7 @@
     (inputs.self.homeManagerModules.television { inherit pkgs;})
     (inputs.self.homeManagerModules.fd { inherit pkgs;})
     (inputs.self.homeManagerModules.bat { inherit pkgs;})
+    (inputs.self.homeManagerModules.fonts { inherit pkgs;})
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -77,6 +78,10 @@
       enable = true;
       package = pkgs.unstablePkgs.go;
     };
+  };
+
+  fonts.fontconfig = {
+    enable = true;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
