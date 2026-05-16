@@ -12,7 +12,7 @@
     # If you want to use modules your own flake exports (from modules/home-manager):
     # inputs.self.homeManagerModules.example
     (inputs.self.homeManagerModules.tools { inherit pkgs;})
-    (inputs.self.homeManagerModules.ai { inherit pkgs; llm-agents = inputs.llm-agents;})
+    (inputs.self.homeManagerModules.ai { inherit pkgs;})
     (inputs.self.homeManagerModules.starship { inherit pkgs;})
     (inputs.self.homeManagerModules.fish { inherit pkgs;})
     (inputs.self.homeManagerModules.atuin { inherit pkgs;})

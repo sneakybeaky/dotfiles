@@ -31,4 +31,4 @@ tasks:
   changed:
     desc: Show what changed with last update
     cmds:
-      - home-manager generations | head -n 2 | cut -d' ' -f 7 | tac | xargs   nix store diff-closures
+      - home-manager generations | head -n 2 | cut -d' ' -f 7 | tail -r | xargs   nix store diff-closures
