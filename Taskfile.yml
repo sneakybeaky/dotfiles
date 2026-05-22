@@ -16,6 +16,11 @@ tasks:
       - task -l
     silent: true
 
+  build:
+    desc: Build Nix configuration
+    cmds:
+      - home-manager build --flake .#{{.USERNAME}}@{{.HOSTNAME}} -b backup
+
   apply:
     desc: Apply Nix configuration
     cmds:

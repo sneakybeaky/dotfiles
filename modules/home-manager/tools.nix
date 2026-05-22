@@ -3,6 +3,7 @@
   ...}:
 {
   home.packages = with pkgs.unstablePkgs; [
+    _1password-cli
     asciinema
     axel
     devenv
@@ -10,8 +11,10 @@
     dix
     dig
     duf
+    gdb
     glow
     gnumake
+    go-task
     jq
     mkcert
     ncdu

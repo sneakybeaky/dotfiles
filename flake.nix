@@ -79,6 +79,15 @@
     in {
       "jon@Jons-MacBook-Pro-72.local" = defaultMac;
       "jon@Jons-M1-MacBook-Pro.local" = defaultMac;
+      "jon.barber@C4GV140CC2" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./home-manager/work.nix
+        ];
+      };
     };
   };
 }
