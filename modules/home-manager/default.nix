@@ -15,4 +15,5 @@
   bat = import ./bat.nix;
   fd = import ./fd.nix;
   fonts = import ./fonts.nix;
+  yt-dlp = import ./yt-dlp.nix;
 }

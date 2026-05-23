@@ -23,6 +23,7 @@
     (inputs.self.homeManagerModules.fd { inherit pkgs;})
     (inputs.self.homeManagerModules.bat { inherit pkgs;})
     (inputs.self.homeManagerModules.fonts { inherit pkgs;})
+    (inputs.self.homeManagerModules.yt-dlp { inherit pkgs config;})
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
