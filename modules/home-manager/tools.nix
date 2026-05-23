@@ -12,6 +12,7 @@
     dig
     duf
     gdb
+    get_iplayer
     glow
     gnumake
     go-task
