@@ -13,6 +13,7 @@
   home.packages = [
     pkgs.llm-agents.crush
     pkgs.claude-monitor
+    pkgs.unstablePkgs.worktrunk
   ];
 
 }
