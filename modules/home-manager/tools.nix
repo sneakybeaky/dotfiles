@@ -8,7 +8,6 @@
     axel
     devenv
     devbox
-    dix
     dig
     duf
     gdb
