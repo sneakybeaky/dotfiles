@@ -2,26 +2,25 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
-  lib,
-  config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # inputs.self.homeManagerModules.example
-    (inputs.self.homeManagerModules.tools { inherit pkgs;})
-    (inputs.self.homeManagerModules.ai { inherit pkgs;})
-    (inputs.self.homeManagerModules.starship { inherit pkgs;})
-    (inputs.self.homeManagerModules.atuin { inherit pkgs;})
-    (inputs.self.homeManagerModules.zed { inherit pkgs;})
-    (inputs.self.homeManagerModules.eza { inherit pkgs;})
-    (inputs.self.homeManagerModules.direnv { inherit pkgs;})
-    (inputs.self.homeManagerModules.television { inherit pkgs;})
-    (inputs.self.homeManagerModules.fd { inherit pkgs;})
-    (inputs.self.homeManagerModules.bat { inherit pkgs;})
-    (inputs.self.homeManagerModules.fonts { inherit pkgs;})
+    (inputs.self.homeManagerModules.tools { inherit pkgs; })
+    (inputs.self.homeManagerModules.ai { inherit pkgs; })
+    (inputs.self.homeManagerModules.starship { inherit pkgs; })
+    (inputs.self.homeManagerModules.atuin { inherit pkgs; })
+    (inputs.self.homeManagerModules.zed { inherit pkgs; })
+    (inputs.self.homeManagerModules.eza { inherit pkgs; })
+    (inputs.self.homeManagerModules.direnv { inherit pkgs; })
+    (inputs.self.homeManagerModules.television { inherit pkgs; })
+    (inputs.self.homeManagerModules.fd { inherit pkgs; })
+    (inputs.self.homeManagerModules.bat { inherit pkgs; })
+    (inputs.self.homeManagerModules.fonts { inherit pkgs; })
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -76,7 +75,6 @@
     unstablePkgs.amazon-ecr-credential-helper
   ];
 
-
   programs = {
     git.enable = true;
     home-manager.enable = true;
@@ -113,36 +111,34 @@
           fish_default_key_bindings
         '';
 
-        interactiveShellInit =
-        ''
-          # Fish syntax highlighting
-          set -g fish_color_autosuggestion '555'  'brblack'
-          set -g fish_color_cancel -r
-          set -g fish_color_command --bold
-          set -g fish_color_comment red
-          set -g fish_color_cwd green
-          set -g fish_color_cwd_root red
-          set -g fish_color_end brmagenta
-          set -g fish_color_error brred
-          set -g fish_color_escape 'bryellow'  '--bold'
-          set -g fish_color_history_current --bold
-          set -g fish_color_host normal
-          set -g fish_color_match --background=brblue
-          set -g fish_color_normal normal
-          set -g fish_color_operator bryellow
-          set -g fish_color_param cyan
-          set -g fish_color_quote yellow
-          set -g fish_color_redirection brblue
-          set -g fish_color_search_match 'bryellow'  '--background=brblack'
-          set -g fish_color_selection 'white'  '--bold'  '--background=brblack'
-          set -g fish_color_user brgreen
-          set -g fish_color_valid_path --underline
+      interactiveShellInit = ''
+        # Fish syntax highlighting
+        set -g fish_color_autosuggestion '555'  'brblack'
+        set -g fish_color_cancel -r
+        set -g fish_color_command --bold
+        set -g fish_color_comment red
+        set -g fish_color_cwd green
+        set -g fish_color_cwd_root red
+        set -g fish_color_end brmagenta
+        set -g fish_color_error brred
+        set -g fish_color_escape 'bryellow'  '--bold'
+        set -g fish_color_history_current --bold
+        set -g fish_color_host normal
+        set -g fish_color_match --background=brblue
+        set -g fish_color_normal normal
+        set -g fish_color_operator bryellow
+        set -g fish_color_param cyan
+        set -g fish_color_quote yellow
+        set -g fish_color_redirection brblue
+        set -g fish_color_search_match 'bryellow'  '--background=brblack'
+        set -g fish_color_selection 'white'  '--bold'  '--background=brblack'
+        set -g fish_color_user brgreen
+        set -g fish_color_valid_path --underline
 
-          set fish_greeting "🐟 Welcome back, $(whoami)!"
-        '';
+        set fish_greeting "🐟 Welcome back, $(whoami)!"
+      '';
 
     };
-
 
   };
 
