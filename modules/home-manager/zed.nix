@@ -4,6 +4,7 @@
 
   home.packages = with pkgs.unstablePkgs; [
     nil
+    nixd
   ];
 
   programs.zed-editor = {
