@@ -2,6 +2,10 @@
   pkgs,
   ...}: {
 
+  home.packages = with pkgs.unstablePkgs; [
+    nil
+  ];
+
   programs.zed-editor = {
     enable = true;
     package = pkgs.unstablePkgs.zed-editor;
