@@ -18,6 +18,8 @@
     enableFishIntegration = true;
   };
 
+  xdg.configFile."worktrunk".source = conf.d/worktrunk;
+
   # Additional AI tools
   home.packages = [
     pkgs.llm-agents.crush
