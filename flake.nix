@@ -26,6 +26,9 @@
 
     # LLM Agents
     llm-agents.url = "github:numtide/llm-agents.nix";
+
+    # Worktrunk
+    home-extra-worktrunk.url = "github:max-sixty/worktrunk";
   };
 
   outputs =
