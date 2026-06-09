@@ -2,28 +2,28 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
-  lib,
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # inputs.self.homeManagerModules.example
-    (inputs.self.homeManagerModules.tools { inherit pkgs;})
-    (inputs.self.homeManagerModules.ai { inherit pkgs;})
-    (inputs.self.homeManagerModules.starship { inherit pkgs;})
-    (inputs.self.homeManagerModules.fish { inherit pkgs;})
-    (inputs.self.homeManagerModules.atuin { inherit pkgs;})
-    (inputs.self.homeManagerModules.zed { inherit pkgs;})
-    (inputs.self.homeManagerModules.eza { inherit pkgs;})
-    (inputs.self.homeManagerModules.direnv { inherit pkgs;})
-    (inputs.self.homeManagerModules.television { inherit pkgs;})
-    (inputs.self.homeManagerModules.fd { inherit pkgs;})
-    (inputs.self.homeManagerModules.bat { inherit pkgs;})
-    (inputs.self.homeManagerModules.fonts { inherit pkgs;})
-    (inputs.self.homeManagerModules.yt-dlp { inherit pkgs config;})
+    (inputs.self.homeManagerModules.tools { inherit pkgs; })
+    (inputs.self.homeManagerModules.ai { inherit pkgs; })
+    (inputs.self.homeManagerModules.starship { inherit pkgs; })
+    (inputs.self.homeManagerModules.fish { inherit pkgs; })
+    (inputs.self.homeManagerModules.atuin { inherit pkgs; })
+    (inputs.self.homeManagerModules.zed { inherit pkgs; })
+    (inputs.self.homeManagerModules.eza { inherit pkgs; })
+    (inputs.self.homeManagerModules.direnv { inherit pkgs; })
+    (inputs.self.homeManagerModules.television { inherit pkgs; })
+    (inputs.self.homeManagerModules.fd { inherit pkgs; })
+    (inputs.self.homeManagerModules.bat { inherit pkgs; })
+    (inputs.self.homeManagerModules.fonts { inherit pkgs; })
+    (inputs.self.homeManagerModules.yt-dlp { inherit pkgs config; })
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
@@ -70,7 +70,6 @@
   home.packages = with pkgs; [
     unstablePkgs.go-task
   ];
-
 
   programs = {
     git.enable = true;

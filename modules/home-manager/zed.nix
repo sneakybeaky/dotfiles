@@ -1,6 +1,8 @@
 {
   pkgs,
-  ...}: {
+  ...
+}:
+{
 
   home.packages = with pkgs.unstablePkgs; [
     nil
@@ -16,7 +18,11 @@
     mutableUserDebug = true;
 
     # This populates the userSettings "auto_install_extensions"
-    extensions = [ "nix" "toml" "make" ];
+    extensions = [
+      "nix"
+      "toml"
+      "make"
+    ];
 
     userSettings = {
       cli_default_open_behavior = "new_window";
@@ -51,7 +57,6 @@
       buffer_font_size = 16;
       soft_wrap = "editor_width";
     };
-
 
   };
 }

@@ -1,6 +1,8 @@
 {
   pkgs,
-  ...}: {
+  ...
+}:
+{
   programs.starship = {
     enable = true;
     package = pkgs.unstablePkgs.starship;

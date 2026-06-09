@@ -1,6 +1,7 @@
 {
   pkgs,
-  ...}:
+  ...
+}:
 {
   home.packages = with pkgs.unstablePkgs; [
     _1password-cli
