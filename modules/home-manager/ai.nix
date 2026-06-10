@@ -18,7 +18,7 @@
     enableFishIntegration = true;
   };
 
-  xdg.configFile."worktrunk".source = conf.d/worktrunk;
+  xdg.configFile."worktrunk".source = ./conf.d/worktrunk;
 
   # Additional AI tools
   home.packages = [

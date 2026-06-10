@@ -3,6 +3,7 @@
 {
   # List your module files here
   # my-module = import ./my-module.nix;
+  nixpkgs = import ./nixpkgs.nix;
   tools = import ./tools.nix;
   ai = import ./ai.nix;
   starship = import ./starship.nix;

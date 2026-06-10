@@ -2,71 +2,32 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
-  config,
   pkgs,
   ...
 }:
 {
-  # You can import other home-manager modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # inputs.self.homeManagerModules.example
-    (inputs.self.homeManagerModules.tools { inherit pkgs; })
-    (inputs.self.homeManagerModules.ai { inherit pkgs inputs; })
-    (inputs.self.homeManagerModules.starship { inherit pkgs; })
-    (inputs.self.homeManagerModules.fish { inherit pkgs; })
-    (inputs.self.homeManagerModules.atuin { inherit pkgs; })
-    (inputs.self.homeManagerModules.zed { inherit pkgs; })
-    (inputs.self.homeManagerModules.eza { inherit pkgs; })
-    (inputs.self.homeManagerModules.direnv { inherit pkgs; })
-    (inputs.self.homeManagerModules.television { inherit pkgs; })
-    (inputs.self.homeManagerModules.fd { inherit pkgs; })
-    (inputs.self.homeManagerModules.bat { inherit pkgs; })
-    (inputs.self.homeManagerModules.fonts { inherit pkgs; })
-    (inputs.self.homeManagerModules.yt-dlp { inherit pkgs config; })
-
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
+    inputs.self.homeManagerModules.nixpkgs
+    inputs.self.homeManagerModules.tools
+    inputs.self.homeManagerModules.ai
+    inputs.self.homeManagerModules.starship
+    inputs.self.homeManagerModules.fish
+    inputs.self.homeManagerModules.atuin
+    inputs.self.homeManagerModules.zed
+    inputs.self.homeManagerModules.eza
+    inputs.self.homeManagerModules.direnv
+    inputs.self.homeManagerModules.television
+    inputs.self.homeManagerModules.fd
+    inputs.self.homeManagerModules.bat
+    inputs.self.homeManagerModules.fonts
+    inputs.self.homeManagerModules.yt-dlp
   ];
 
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      inputs.self.overlays.additions
-      inputs.self.overlays.modifications
-      inputs.self.overlays.unstable-packages
-      inputs.llm-agents.overlays.default
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-    };
-  };
-
-  # TODO: Set your username
   home = {
     username = "jon";
     homeDirectory = "/Users/jon";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
   home.packages = with pkgs; [
     unstablePkgs.go-task
   ];
@@ -80,9 +41,7 @@
     };
   };
 
-  fonts.fontconfig = {
-    enable = true;
-  };
+  fonts.fontconfig.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.11";
