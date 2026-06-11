@@ -10,6 +10,8 @@
     enable = true;
     package = pkgs.llm-agents.claude-code;
 
+    context = ./conf.d/claude/memory.md;
+
   };
 
   programs.worktrunk = {
