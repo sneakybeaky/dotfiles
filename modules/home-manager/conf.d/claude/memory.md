@@ -11,3 +11,13 @@ All code changes must follow a Test-Driven Development (TDD) flow:
 4. **Refactor.** With the tests passing, clean up the implementation and tests: remove duplication, improve naming, simplify structure. Re-run the tests after each refactor step to confirm nothing regresses.
 
 Repeat the cycle for each new behaviour or bug fix. Never skip straight to implementation — the failing test comes first.
+
+# Go Testing
+
+When writing tests in Go, use the `github.com/google/go-cmp/cmp` package for equality testing instead of `reflect.DeepEqual` or manual comparisons. Use `cmp.Diff` to produce readable diffs on failure, for example:
+
+```go
+if diff := cmp.Diff(want, got); diff != "" {
+    t.Errorf("mismatch (-want +got):\n%s", diff)
+}
+```
