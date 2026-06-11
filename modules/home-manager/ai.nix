@@ -26,6 +26,9 @@
   home.packages = [
     pkgs.llm-agents.crush
     pkgs.claude-monitor
+    pkgs.llm-agents.ccusage
+    pkgs.llm-agents.agent-browser
+
   ];
 
 }
