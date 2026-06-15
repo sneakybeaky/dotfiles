@@ -42,6 +42,7 @@ in
     pkgs.llm-agents.ccusage
     pkgs.llm-agents.agent-browser
     pkgs.llm-agents.nono
+    pkgs.llm-agents.skills
   ];
 
 }
