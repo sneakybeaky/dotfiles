@@ -1,5 +1,5 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
+# Work MacBook home-manager configuration.
+# Shared config lives in ./common.nix.
 {
   inputs,
   pkgs,
@@ -7,20 +7,8 @@
 }:
 {
   imports = [
-    inputs.self.homeManagerModules.nixpkgs
-    inputs.self.homeManagerModules.tools
-    inputs.self.homeManagerModules.ai
+    ./common.nix
     inputs.self.homeManagerModules.ai-skills
-    inputs.self.homeManagerModules.starship
-    inputs.self.homeManagerModules.fish
-    inputs.self.homeManagerModules.atuin
-    inputs.self.homeManagerModules.zed
-    inputs.self.homeManagerModules.eza
-    inputs.self.homeManagerModules.direnv
-    inputs.self.homeManagerModules.television
-    inputs.self.homeManagerModules.fd
-    inputs.self.homeManagerModules.bat
-    inputs.self.homeManagerModules.fonts
   ];
 
   home = {
@@ -37,13 +25,6 @@
   ];
 
   programs = {
-    git.enable = true;
-    home-manager.enable = true;
-    go = {
-      enable = true;
-      package = pkgs.unstablePkgs.go;
-    };
-
     mise = {
       enable = true;
       package = pkgs.unstablePkgs.mise;
@@ -62,9 +43,4 @@
         fish_add_path "/Users/jon.barber/Library/Application Support/JetBrains/Toolbox/scripts"
       '';
   };
-
-  fonts.fontconfig.enable = true;
-
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "25.11";
 }
