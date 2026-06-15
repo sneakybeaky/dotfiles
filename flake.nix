@@ -54,7 +54,6 @@
       self,
       nixpkgs,
       home-manager,
-      agent-skills,
       ...
     }@inputs:
     let
@@ -112,7 +111,6 @@
               inherit inputs;
             };
             modules = [
-              agent-skills.homeManagerModules.default
               ./home-manager/work.nix
             ];
           };

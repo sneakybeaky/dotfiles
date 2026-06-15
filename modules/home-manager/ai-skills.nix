@@ -1,7 +1,9 @@
 {
+  inputs,
   ...
 }:
 {
+  imports = [ inputs.agent-skills.homeManagerModules.default ];
 
   programs.agent-skills = {
     enable = true;
