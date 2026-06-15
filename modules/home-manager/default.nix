@@ -17,4 +17,5 @@
   fd = import ./fd.nix;
   fonts = import ./fonts.nix;
   yt-dlp = import ./yt-dlp.nix;
+  ai-skills = import ./ai-skills.nix;
 }

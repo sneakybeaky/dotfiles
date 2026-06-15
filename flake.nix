@@ -29,6 +29,24 @@
 
     # Worktrunk
     home-extra-worktrunk.url = "github:max-sixty/worktrunk";
+
+    # Agent Skills
+    agent-skills.url = "github:Kyure-A/agent-skills-nix";
+    mattpocock-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
+
+    anthropic-skills = {
+      url = "github:anthropics/skills";
+      flake = false;
+    };
+
+    vercel-skills = {
+      url = "github:vercel-labs/skills";
+      flake = false;
+    };
+
   };
 
   outputs =
@@ -36,6 +54,7 @@
       self,
       nixpkgs,
       home-manager,
+      agent-skills,
       ...
     }@inputs:
     let
@@ -93,6 +112,7 @@
               inherit inputs;
             };
             modules = [
+              agent-skills.homeManagerModules.default
               ./home-manager/work.nix
             ];
           };
