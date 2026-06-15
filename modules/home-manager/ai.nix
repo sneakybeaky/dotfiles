@@ -1,8 +1,14 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }:
+
+let
+  inherit (lib) mkAfter getExe;
+in
+
 {
   imports = [ inputs.home-extra-worktrunk.homeModules.default ];
 
@@ -30,5 +36,12 @@
     pkgs.llm-agents.agent-browser
     pkgs.llm-agents.nono
   ];
+
+  programs.fish.interactiveShellInit =
+    # Using `mkAfter` to make it more likely to appear after other
+    # manipulations of the prompt.
+    mkAfter ''
+      ${getExe pkgs.llm-agents.nono} completion fish | source
+    '';
 
 }
