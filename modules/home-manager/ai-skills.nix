@@ -26,10 +26,17 @@
       filter.maxDepth = 1;
     };
 
+    sources.addyosmani = {
+      input = "addyosmani-skills";
+      subdir = "skills";
+      filter.maxDepth = 1;
+    };
+
     skills.enable = [
       "skill-creator"
       "teach"
       "find-skills"
+      "test-driven-development"
     ];
     targets.claude.enable = true;
   };

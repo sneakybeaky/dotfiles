@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "addyosmani-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781568794,
+        "narHash": "sha256-QUlbYBKd+eJpDo7lP/poFbKwVZq2MMAavFcfCmiKAF4=",
+        "owner": "addyosmani",
+        "repo": "agent-skills",
+        "rev": "a5f0b176381e9fea24a61aefc243506686aa2435",
+        "type": "github"
+      },
+      "original": {
+        "owner": "addyosmani",
+        "repo": "agent-skills",
+        "type": "github"
+      }
+    },
     "agent-skills": {
       "inputs": {
         "home-manager": "home-manager",
@@ -331,6 +347,7 @@
     },
     "root": {
       "inputs": {
+        "addyosmani-skills": "addyosmani-skills",
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
         "home-extra-worktrunk": "home-extra-worktrunk",

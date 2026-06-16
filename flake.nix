@@ -47,6 +47,11 @@
       flake = false;
     };
 
+    addyosmani-skills = {
+      url = "github:addyosmani/agent-skills";
+      flake = false;
+    };
+
   };
 
   outputs =
