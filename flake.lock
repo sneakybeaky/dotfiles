@@ -53,14 +53,8 @@
     },
     "blueprint": {
       "inputs": {
-        "nixpkgs": [
-          "llm-agents",
-          "nixpkgs"
-        ],
-        "systems": [
-          "llm-agents",
-          "systems"
-        ]
+        "nixpkgs": ["llm-agents", "nixpkgs"],
+        "systems": ["llm-agents", "systems"]
       },
       "locked": {
         "lastModified": 1776249299,
@@ -78,22 +72,10 @@
     },
     "bun2nix": {
       "inputs": {
-        "flake-parts": [
-          "llm-agents",
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "llm-agents",
-          "nixpkgs"
-        ],
-        "systems": [
-          "llm-agents",
-          "systems"
-        ],
-        "treefmt-nix": [
-          "llm-agents",
-          "treefmt-nix"
-        ]
+        "flake-parts": ["llm-agents", "flake-parts"],
+        "nixpkgs": ["llm-agents", "nixpkgs"],
+        "systems": ["llm-agents", "systems"],
+        "treefmt-nix": ["llm-agents", "treefmt-nix"]
       },
       "locked": {
         "lastModified": 1778446047,
@@ -126,10 +108,7 @@
     },
     "flake-parts": {
       "inputs": {
-        "nixpkgs-lib": [
-          "llm-agents",
-          "nixpkgs"
-        ]
+        "nixpkgs-lib": ["llm-agents", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1778716662,
@@ -171,11 +150,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1781757734,
-        "narHash": "sha256-yJGmnjbDiyLVc2AruqpkD3+pQ61DfWXirNtxY3o66dU=",
+        "lastModified": 1781765216,
+        "narHash": "sha256-ziBPpU7ZhAbNvdWuwxzk3oL5/VE9jOD4hcDPBZcH3sQ=",
         "owner": "max-sixty",
         "repo": "worktrunk",
-        "rev": "47180a7035b64d14c8551facd0de3fe083bc8055",
+        "rev": "d824d30f3dd32ae06f93699faa0a91644e9fa789",
         "type": "github"
       },
       "original": {
@@ -186,10 +165,7 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": [
-          "agent-skills",
-          "nixpkgs"
-        ]
+        "nixpkgs": ["agent-skills", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1781497404,
@@ -207,9 +183,7 @@
     },
     "home-manager_2": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nixpkgs"]
       },
       "locked": {
         "lastModified": 1781319724,
@@ -236,11 +210,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1781746198,
-        "narHash": "sha256-AmTzz9SOkEuBmBEhmppxmxJTRoc+AtAe3xI5SLGtXI8=",
+        "lastModified": 1781764304,
+        "narHash": "sha256-PESLN9z2WfRSFDWR6ZAeYU4l/Xq7oqqLn7/Myfk1OhE=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "02775cea5240a05825a4ca454806d0a838289dec",
+        "rev": "cf6642d1330d158ceee9d4770e085ce86180a0e0",
         "type": "github"
       },
       "original": {
@@ -361,10 +335,7 @@
     },
     "rust-overlay": {
       "inputs": {
-        "nixpkgs": [
-          "home-extra-worktrunk",
-          "nixpkgs"
-        ]
+        "nixpkgs": ["home-extra-worktrunk", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1780370483,
@@ -412,10 +383,7 @@
     },
     "treefmt-nix": {
       "inputs": {
-        "nixpkgs": [
-          "llm-agents",
-          "nixpkgs"
-        ]
+        "nixpkgs": ["llm-agents", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1780220602,
