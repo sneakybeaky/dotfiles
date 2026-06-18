@@ -43,6 +43,7 @@ in
     pkgs.llm-agents.agent-browser
     pkgs.llm-agents.nono
     pkgs.llm-agents.skills
+    pkgs.llm-agents.herdr
   ];
 
 }
