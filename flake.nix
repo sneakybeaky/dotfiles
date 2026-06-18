@@ -83,6 +83,31 @@
       # Other options beside 'alejandra' include 'nixpkgs-fmt'
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
+      # Sandboxed checks, run via 'nix flake check'.
+      checks = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          # Acceptance tests for the nono pack reconcile logic (no network).
+          nono-reconcile =
+            pkgs.runCommand "nono-reconcile-test"
+              {
+                nativeBuildInputs = [
+                  pkgs.bash
+                  pkgs.jq
+                  pkgs.coreutils
+                  pkgs.gnugrep
+                ];
+              }
+              ''
+                bash ${./modules/home-manager/nono}/tests/reconcile_test.sh
+                touch "$out"
+              '';
+        }
+      );
+
       # Your custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };
       # Reusable home-manager modules you might want to export

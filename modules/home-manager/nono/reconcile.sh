@@ -46,6 +46,11 @@ plan="$(
     | jq -c --argjson desired "$NONO_DESIRED_JSON" --argjson prune "$prune_bool" -f "$PLAN_JQ"
 )"
 
+# Summarise up front so a fully-converged (no-op) run is still visible in the
+# activation log rather than printing nothing at all.
+log "$(printf '%s' "$plan" \
+  | jq -r '"\(.pull|length) to pull, \(.remove|length) to remove, \(.keep|length) already present"')"
+
 # Pull missing / changed packs.
 while IFS= read -r ref; do
   [ -n "$ref" ] || continue
@@ -53,8 +58,10 @@ while IFS= read -r ref; do
   # $NONO_RUN is intentionally unquoted: empty -> runs directly; under a dry
   # run it is $DRY_RUN_CMD and turns the mutation into a printed no-op.
   if [ "$NONO_FORCE" = "true" ]; then
+    # shellcheck disable=SC2086
     $NONO_RUN "$NONO_BIN" pull "$ref" --force
   else
+    # shellcheck disable=SC2086
     $NONO_RUN "$NONO_BIN" pull "$ref"
   fi
 done < <(printf '%s' "$plan" | jq -r '.pull[]')
@@ -63,5 +70,6 @@ done < <(printf '%s' "$plan" | jq -r '.pull[]')
 while IFS= read -r ref; do
   [ -n "$ref" ] || continue
   log "remove $ref"
+  # shellcheck disable=SC2086
   $NONO_RUN "$NONO_BIN" remove "$ref"
 done < <(printf '%s' "$plan" | jq -r '.remove[]')

@@ -37,14 +37,18 @@ let
 
   desiredJSON = builtins.toJSON (map parsePack cfg.packs);
 
-  # Ship reconcile.sh + plan.jq together so the script finds the planner
-  # next to itself, without dragging the tests/ dir into the store.
-  reconcileDir = pkgs.runCommand "nono-packs-reconcile" { } ''
-    mkdir -p "$out"
-    cp ${./nono/reconcile.sh} "$out/reconcile.sh"
-    cp ${./nono/plan.jq} "$out/plan.jq"
-    chmod +x "$out/reconcile.sh"
-  '';
+  # The reconcile runner, wrapped so it is shellcheck-validated at build time
+  # and gets jq + coreutils on PATH declaratively (no manual makeBinPath). The
+  # planner is passed by absolute store path via NONO_PLAN_JQ, so the script
+  # need not live next to plan.jq.
+  reconcile = pkgs.writeShellApplication {
+    name = "nono-packs-reconcile";
+    runtimeInputs = [
+      pkgs.jq
+      pkgs.coreutils
+    ];
+    text = builtins.readFile ./nono/reconcile.sh;
+  };
 in
 {
   options.programs.nono = {
@@ -110,8 +114,8 @@ in
     # Reconcile after files are written; idempotent, so it is a no-op once
     # the installed set matches `packs`. Honours $DRY_RUN_CMD via NONO_RUN.
     home.activation.nonoPacks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      export PATH="${lib.makeBinPath [ pkgs.jq pkgs.coreutils ]}:$PATH"
       export NONO_BIN=${lib.escapeShellArg (lib.getExe cfg.package)}
+      export NONO_PLAN_JQ=${./nono/plan.jq}
       export NONO_DESIRED_JSON=${lib.escapeShellArg desiredJSON}
       export NONO_PRUNE=${lib.boolToString cfg.pruneUnmanaged}
       export NONO_FORCE=${lib.boolToString cfg.force}
@@ -119,7 +123,7 @@ in
       ${lib.optionalString (
         cfg.registry != null
       ) "export NONO_REGISTRY=${lib.escapeShellArg cfg.registry}"}
-      ${lib.getExe pkgs.bash} ${reconcileDir}/reconcile.sh
+      ${lib.getExe reconcile}
     '';
   };
 }
