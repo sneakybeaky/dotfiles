@@ -6,6 +6,7 @@
   nixpkgs = import ./nixpkgs.nix;
   tools = import ./tools.nix;
   ai = import ./ai.nix;
+  nono = import ./nono.nix;
   starship = import ./starship.nix;
   fish = import ./fish.nix;
   atuin = import ./atuin.nix;

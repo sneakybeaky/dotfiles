@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   inputs,
   lib,
@@ -28,11 +29,22 @@ in
 
   xdg.configFile."worktrunk".source = ./conf.d/worktrunk;
 
+  # nono installs the binary (via programs.nono below), and declaratively
+  # manages its packs. Versionless: any installed version satisfies the
+  # entry, so `nono update` controls when claude moves forward.
+  programs.nono = {
+    enable = true;
+    package = pkgs.llm-agents.nono;
+    packs = [
+      "always-further/claude"
+    ];
+  };
+
   # Generate nono's fish completions at build time so they're autoloaded
   # lazily by fish (and validated at build time) rather than re-sourced on
   # every shell startup.
   xdg.configFile."fish/completions/nono.fish".source = pkgs.runCommand "nono-completions.fish" { } ''
-    ${getExe pkgs.llm-agents.nono} completion fish > $out
+    ${getExe config.programs.nono.package} completion fish > $out
   '';
 
   # Additional AI tools
@@ -41,7 +53,6 @@ in
     pkgs.claude-monitor
     pkgs.llm-agents.ccusage
     pkgs.llm-agents.agent-browser
-    pkgs.llm-agents.nono
     pkgs.llm-agents.skills
     pkgs.llm-agents.herdr
   ];

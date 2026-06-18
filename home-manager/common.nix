@@ -11,6 +11,7 @@
     inputs.self.homeManagerModules.nixpkgs
     inputs.self.homeManagerModules.tools
     inputs.self.homeManagerModules.ai
+    inputs.self.homeManagerModules.nono
     inputs.self.homeManagerModules.starship
     inputs.self.homeManagerModules.fish
     inputs.self.homeManagerModules.atuin
