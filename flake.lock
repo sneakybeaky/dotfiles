@@ -3,11 +3,11 @@
     "addyosmani-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1781999800,
-        "narHash": "sha256-fzVLLcdZLuW2/Dd4rYjY2v9k4+yJWY31ZmataEfPLEE=",
+        "lastModified": 1782152501,
+        "narHash": "sha256-bInEHMSKsUObreBoJPvysd1Uw2YR2YX4F5nGr/1beIo=",
         "owner": "addyosmani",
         "repo": "agent-skills",
-        "rev": "17214a29c429a19f7a9607f2c06f9d650ea87eb0",
+        "rev": "775f826b757179f29d32d2e26494bb5c174f237e",
         "type": "github"
       },
       "original": {
@@ -171,11 +171,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1782103933,
-        "narHash": "sha256-kMtBpZW/jnv1J8qcGzee3OwTq0wohIAbtZT47dExtYg=",
+        "lastModified": 1782153375,
+        "narHash": "sha256-wJ8Ds8/VV3eU65m4VDRhn9tS87n3GMgsgu5zMR1wjGk=",
         "owner": "max-sixty",
         "repo": "worktrunk",
-        "rev": "333d630ef4edfd8d2c768dad6a32be458515b08d",
+        "rev": "0fc757f08d0875bb23a70bc33e6017a4593666ea",
         "type": "github"
       },
       "original": {
