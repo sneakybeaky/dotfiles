@@ -25,11 +25,11 @@
   ];
 
   programs = {
-    mise = {
-      enable = true;
-      package = pkgs.unstablePkgs.mise;
-      enableFishIntegration = true;
-    };
+    # mise = {
+    #   enable = true;
+    #   package = pkgs.unstablePkgs.mise;
+    #   enableFishIntegration = true;
+    # };
 
     awscli = {
       enable = true;
@@ -41,6 +41,7 @@
       ''
         source ~/.orbstack/shell/init2.fish 2>/dev/null || :
         fish_add_path "/Users/jon.barber/Library/Application Support/JetBrains/Toolbox/scripts"
+        ~/.local/bin/mise activate fish | source
       '';
   };
 }
