@@ -17,6 +17,9 @@
         set -x -U VISUAL "zeditor --wait"
 
         fish_default_key_bindings
+
+        # iTerm shows # for opt 3 key press
+        bind \e3 'commandline -i "#"'
       '';
 
     interactiveShellInit = ''
