@@ -39,7 +39,6 @@
     # Work-specific shell additions, merged with the base config from fish.nix
     fish.shellInit = # fish
       ''
-        source ~/.orbstack/shell/init2.fish 2>/dev/null || :
         fish_add_path "/Users/jon.barber/Library/Application Support/JetBrains/Toolbox/scripts"
         ~/.local/bin/mise activate fish | source
       '';
