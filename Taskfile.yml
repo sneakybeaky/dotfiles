@@ -43,3 +43,11 @@ tasks:
     cmds:
       - home-manager build --flake .#{{.USERNAME}}@{{.HOSTNAME}}
       - nix run .#nix-cache-check -- -r -missing ./result
+
+  cache-check-unstable:
+    desc: "Check if an unstable package is in a binary cache, e.g. `task cache-check-unstable -- mise`"
+    vars:
+      PKG_PATH:
+        sh: nix eval --raw --impure --expr 'let f = builtins.getFlake (toString ./.); in (import f.inputs.nixpkgs-unstable { system = builtins.currentSystem; config.allowUnfree = true; }).{{.CLI_ARGS}}.outPath'
+    cmds:
+      - printf '%s\n' "{{.PKG_PATH}}" | nix run .#nix-cache-check --

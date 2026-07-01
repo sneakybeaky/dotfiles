@@ -63,3 +63,17 @@ nix-cache-check -eval -r -quiet .#packages.aarch64-darwin.default
 nix-cache-check -json -caches https://cache.numtide.com,https://cache.garnix.io \
   /nix/store/xxxx-hello-2.12.3
 ```
+
+## Taskfile helpers
+
+Two convenience tasks are defined in the repo's `Taskfile.yml`:
+
+```sh
+# Build the current host's home config and list closure paths missing from caches
+task cache-check
+
+# Check whether an unstable package would be substituted. This resolves the
+# package's output path through the flake's *locked* nixpkgs-unstable input
+# (same config as the overlay), so it matches exactly what home-manager builds.
+task cache-check-unstable -- mise
+```
