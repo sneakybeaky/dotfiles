@@ -38,6 +38,17 @@ tasks:
     cmds:
       - home-manager generations | head -n 2 | cut -d' ' -f 7 | tail -r | xargs   nix store diff-closures
 
+  deps:
+    desc: Show flake input versions (locked revisions, dates, and nixpkgs release strings)
+    cmds:
+      - nix flake metadata
+      - cmd: |
+          echo
+          echo "Release versions:"
+          printf '  %-18s %s\n' nixpkgs "$(nix eval --raw --impure --expr 'let f = builtins.getFlake (toString ./.); in (import f.inputs.nixpkgs {}).lib.version')"
+          printf '  %-18s %s\n' nixpkgs-unstable "$(nix eval --raw --impure --expr 'let f = builtins.getFlake (toString ./.); in (import f.inputs.nixpkgs-unstable {}).lib.version')"
+        silent: true
+
   cache-check:
     desc: Show which packages in the home config are missing from binary caches
     cmds:
