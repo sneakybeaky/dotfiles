@@ -1,1 +1,4 @@
 result
+
+# Compiled Go binary from `go build` in package dirs
+/pkgs/nix-cache-check/nix-cache-check

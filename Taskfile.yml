@@ -37,3 +37,9 @@ tasks:
     desc: Show what changed with last update
     cmds:
       - home-manager generations | head -n 2 | cut -d' ' -f 7 | tail -r | xargs   nix store diff-closures
+
+  cache-check:
+    desc: Show which packages in the home config are missing from binary caches
+    cmds:
+      - home-manager build --flake .#{{.USERNAME}}@{{.HOSTNAME}}
+      - nix run .#nix-cache-check -- -r -missing ./result

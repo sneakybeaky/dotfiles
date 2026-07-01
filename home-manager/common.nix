@@ -24,6 +24,10 @@
     inputs.self.homeManagerModules.fonts
   ];
 
+  home.packages = [
+    inputs.self.packages.${pkgs.system}.nix-cache-check
+  ];
+
   programs = {
     git.enable = true;
     home-manager.enable = true;
