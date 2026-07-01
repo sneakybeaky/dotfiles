@@ -5,11 +5,11 @@
 {
   programs.direnv = {
     enable = true;
-    package = pkgs.unstablePkgs.direnv;
+    package = pkgs.direnv;
 
-    mise = {
-      enable = true;
-      package = pkgs.unstablePkgs.mise;
-    };
+    # mise = {
+    #   enable = true;
+    #   package = pkgs.unstablePkgs.mise;
+    # };
   };
 }

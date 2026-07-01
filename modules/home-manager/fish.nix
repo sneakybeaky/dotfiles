@@ -8,7 +8,7 @@
 
   programs.fish = {
     enable = true;
-    package = pkgs.unstablePkgs.fish;
+    package = pkgs.fish;
 
     shellInit = # fish
       ''

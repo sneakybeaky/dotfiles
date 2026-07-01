@@ -30,7 +30,12 @@
     #   package = pkgs.unstablePkgs.mise;
     #   enableFishIntegration = true;
     # };
-
+    direnv = {
+      # mise = {
+      #   enable = true;
+      #   package = pkgs.unstablePkgs.mise;
+      # };
+    };
     awscli = {
       enable = true;
       package = pkgs.unstablePkgs.awscli;
