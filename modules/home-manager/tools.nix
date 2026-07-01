@@ -16,6 +16,7 @@
     glow
     gnumake
     go-task
+    hydra-check
     jq
     mkcert
     ncdu
