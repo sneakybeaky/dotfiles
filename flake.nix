@@ -30,10 +30,6 @@
     # Worktrunk
     home-extra-worktrunk.url = "github:max-sixty/worktrunk";
 
-    # Pinned mise version 2026.6.11
-    # from https://www.nixhub.io/packages/mise
-    pinnedMiseVersion.url = "github:nixos/nixpkgs/7a1a64774a5fd0b0cd39ac95d0e170ace8b266a0";
-
     # Agent Skills
     agent-skills.url = "github:Kyure-A/agent-skills-nix";
     mattpocock-skills = {
