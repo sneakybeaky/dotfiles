@@ -22,5 +22,9 @@
     };
   };
 
-  pinned-mise = import ./pinned-mise.nix;
+  # Override mise with a pinned nixpkgs rev so home-manager's programs.mise
+  # module uses a known-good version regardless of the main nixpkgs channel.
+  pinned-mise = final: prev: {
+    mise = inputs.pinnedMiseVersion.legacyPackages.${prev.stdenv.hostPlatform.system}.mise;
+  };
 }
