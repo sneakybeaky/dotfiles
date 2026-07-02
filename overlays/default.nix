@@ -1,6 +1,6 @@
 # This file defines overlays
 # These are arbitrary named and just some conventions I use, you can name then whenever and/or make as many as you want
-{inputs, ...}: {
+{ inputs, ... }: {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs final.pkgs;
 
@@ -21,4 +21,6 @@
       config.allowUnfree = true;
     };
   };
+
+  pinned-mise = import ./pinned-mise.nix;
 }

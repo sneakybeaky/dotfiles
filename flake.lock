@@ -345,6 +345,22 @@
         "type": "github"
       }
     },
+    "pinnedMiseVersion": {
+      "locked": {
+        "lastModified": 1782760764,
+        "narHash": "sha256-N66fYdUuZ9hpdM7jsQ7CUWtLJduqGDyTGCaLR62CXaQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "7a1a64774a5fd0b0cd39ac95d0e170ace8b266a0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "7a1a64774a5fd0b0cd39ac95d0e170ace8b266a0",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "addyosmani-skills": "addyosmani-skills",
@@ -356,6 +372,7 @@
         "mattpocock-skills": "mattpocock-skills",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "pinnedMiseVersion": "pinnedMiseVersion",
         "vercel-skills": "vercel-skills"
       }
     },

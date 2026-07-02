@@ -25,16 +25,14 @@
   ];
 
   programs = {
-    # mise = {
-    #   enable = true;
-    #   package = pkgs.unstablePkgs.mise;
-    #   enableFishIntegration = true;
-    # };
+    mise = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     direnv = {
-      # mise = {
-      #   enable = true;
-      #   package = pkgs.unstablePkgs.mise;
-      # };
+      mise = {
+        enable = true;
+      };
     };
     awscli = {
       enable = true;
@@ -45,7 +43,6 @@
     fish.shellInit = # fish
       ''
         fish_add_path "/Users/jon.barber/Library/Application Support/JetBrains/Toolbox/scripts"
-        ~/.local/bin/mise activate fish | source
       '';
   };
 }
