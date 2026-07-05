@@ -25,7 +25,7 @@
   ];
 
   home.packages = [
-    inputs.self.packages.${pkgs.system}.nix-cache-check
+    inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.nix-cache-check
   ];
 
   programs = {
