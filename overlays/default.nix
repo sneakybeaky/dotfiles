@@ -27,7 +27,7 @@
   # Pin: mise 2026.6.11 — update via https://www.nixhub.io/packages/mise
   pinned-mise =
     let
-      pinnedNixpkgs = builtins.fetchTree {
+      pinnedNixpkgs = fetchTree {
         type = "github";
         owner = "nixos";
         repo = "nixpkgs";
