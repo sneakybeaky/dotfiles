@@ -5,6 +5,11 @@
   pkgs,
   ...
 }:
+let
+  # Single source of truth for the mise package used below.
+  # Swap to `pkgs.mise` to use the pinned version from the pinned-mise overlay.
+  misePackage = pkgs.unstablePkgs.mise;
+in
 {
   imports = [
     ./common.nix
@@ -27,10 +32,12 @@
   programs = {
     mise = {
       enable = true;
+      package = misePackage;
       enableFishIntegration = true;
     };
     direnv = {
       mise = {
+        package = misePackage;
         enable = true;
       };
     };
