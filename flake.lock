@@ -3,11 +3,11 @@
     "addyosmani-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1783549656,
-        "narHash": "sha256-H+RPUFIgEKVu4Wt9Xw7URxhBUX9rQ8sjicfmyy/6ceg=",
+        "lastModified": 1783617824,
+        "narHash": "sha256-gav2SUXLVH5hLLC7s3WVF3ysNvOFTi3GdcWI2SO6Ek0=",
         "owner": "addyosmani",
         "repo": "agent-skills",
-        "rev": "0e63d8ea962ecac51637421d8fff63702fac766b",
+        "rev": "edaa28a2293fc51e30df835453a89282f4ff0079",
         "type": "github"
       },
       "original": {
@@ -171,11 +171,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1783502204,
-        "narHash": "sha256-ZJ2HWH/6UWzM2QYwQ4DLyOO82L7+ZN4zwRQvw3NTgSU=",
+        "lastModified": 1783625000,
+        "narHash": "sha256-LxoHke+65qQ4dLaj1Ok1VjnJitewsM6PS2LshF2KOkw=",
         "owner": "max-sixty",
         "repo": "worktrunk",
-        "rev": "9f552bbae7d748da2b8c3ab2941da8e13efbb26f",
+        "rev": "adb417ede817273d51ac5736924f7dc2bb41f5ff",
         "type": "github"
       },
       "original": {
@@ -236,11 +236,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1783583789,
-        "narHash": "sha256-HbqSaikSTGq3iTsrqRwHxOCHA4RSdvZSB6WWx7/0cA0=",
+        "lastModified": 1783603646,
+        "narHash": "sha256-plXAK4U32Kub++YIs9zPYMfE2y6GAAcKjjY8yuqOkWE=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "f435ce87ba1f65542d2b67267757ca3fbd8b58bf",
+        "rev": "89b3d6ef814f387a2c6b574a0153a8fb40db7bf7",
         "type": "github"
       },
       "original": {
