@@ -39,18 +39,21 @@
       mise = (import pinnedNixpkgs { system = prev.stdenv.hostPlatform.system; }).mise;
     };
 
+  # Bump Apple's `container` past the version in nixpkgs (0.12.3 in 26.05).
+  # Upstream ships a signed .pkg installer that is unpacked with xar/bsdtar,
+  # so overriding `version` + `src` is enough — the build phases are unchanged.
+  # Refresh `hash` with `nix-prefetch-url <url>` when bumping the version.
   container =
     let
       version = "1.1.0";
     in
     final: prev: {
-      container = prev.container.overrideAttrs (old: {
+      container = prev.container.overrideAttrs {
         inherit version;
         src = prev.fetchurl {
           url = "https://github.com/apple/container/releases/download/${version}/container-${version}-installer-signed.pkg";
-
           hash = "sha256-DKHEKiJpwlV++x2CsbOKxVPmo6PaGxF5xDm87h59ZxQ=";
         };
-      });
+      };
     };
 }
