@@ -3,27 +3,30 @@
   ...
 }:
 {
-  home.packages = with pkgs.unstablePkgs; [
-    _1password-cli
-    asciinema
-    axel
-    devenv
-    devbox
-    dig
-    duf
-    gdb
-    get_iplayer
-    glow
+
+  home.packages = with pkgs; [
+    container
     gnumake
-    go-task
-    hydra-check
-    jq
-    mkcert
-    ncdu
-    ngrok
-    ripgrep
-    tldr
+    dig
     unrar
     wget
+    unstablePkgs._1password-cli
+    unstablePkgs.asciinema
+    unstablePkgs.axel
+    unstablePkgs.devenv
+    unstablePkgs.devbox
+    unstablePkgs.duf
+    unstablePkgs.gdb
+    unstablePkgs.get_iplayer
+    unstablePkgs.glow
+    unstablePkgs.go-task
+    unstablePkgs.hydra-check
+    unstablePkgs.jq
+    unstablePkgs.mkcert
+    unstablePkgs.ncdu
+    unstablePkgs.ngrok
+    unstablePkgs.ripgrep
+    unstablePkgs.tldr
   ];
+
 }

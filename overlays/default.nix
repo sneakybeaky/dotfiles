@@ -38,4 +38,19 @@
     final: prev: {
       mise = (import pinnedNixpkgs { system = prev.stdenv.hostPlatform.system; }).mise;
     };
+
+  container =
+    let
+      version = "1.1.0";
+    in
+    final: prev: {
+      container = prev.container.overrideAttrs (old: {
+        inherit version;
+        src = prev.fetchurl {
+          url = "https://github.com/apple/container/releases/download/${version}/container-${version}-installer-signed.pkg";
+
+          hash = "sha256-DKHEKiJpwlV++x2CsbOKxVPmo6PaGxF5xDm87h59ZxQ=";
+        };
+      });
+    };
 }
