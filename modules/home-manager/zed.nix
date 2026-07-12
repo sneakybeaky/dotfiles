@@ -11,7 +11,7 @@
 
   programs.zed-editor = {
     enable = true;
-    package = pkgs.unstablePkgs.zed-editor;
+    package = pkgs.zed-editor;
 
     mutableUserSettings = true;
     mutableUserKeymaps = true;
@@ -46,12 +46,8 @@
           enable_thinking = true;
           effort = "high";
         };
-        favorite_models = [
-
-        ];
-        model_parameters = [
-
-        ];
+        favorite_models = [ ];
+        model_parameters = [ ];
       };
       ui_font_size = 16;
       buffer_font_size = 16;

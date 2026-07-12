@@ -6,8 +6,9 @@
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
       inputs.self.overlays.pinned-mise
+      inputs.self.overlays.pinned-zed
       inputs.self.overlays.container
-      inputs.llm-agents.overlays.default
+      inputs.self.overlays.llm-agents
     ];
     config = {
       allowUnfree = true;
