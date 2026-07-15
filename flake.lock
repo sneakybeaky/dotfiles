@@ -146,11 +146,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1784012902,
-        "narHash": "sha256-Ol3+OT7SK19Sib3YmC1e6lDwwS2PigB+nZr6rHKXVAw=",
+        "lastModified": 1784094146,
+        "narHash": "sha256-TL1W5fdjGz4/QwsMMBgMBpY+2ckCUnfIyqZCij+0DQg=",
         "owner": "max-sixty",
         "repo": "worktrunk",
-        "rev": "2c7f24db3cf2484e22361fe4b14aa06eaf4562f6",
+        "rev": "489fd0f5014556ed64155c4f8d15a72e6e9f89e3",
         "type": "github"
       },
       "original": {
@@ -210,11 +210,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1784012825,
-        "narHash": "sha256-lbdkOH57StVOFMEpFASzEmi+GlK3iX6Uu7Y2zGUgVFE=",
+        "lastModified": 1784096685,
+        "narHash": "sha256-b32HyAoqQdgQstUBblZ5Nnk5M62yiOhpgpJVJohJ+k0=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "5c73869318afcf796a7a465b4b5e31b27f0819d4",
+        "rev": "d9654e7480b8146fddd709dbe5d12668bb34fa74",
         "type": "github"
       },
       "original": {
@@ -226,11 +226,11 @@
     "mattpocock-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1783949761,
-        "narHash": "sha256-snwD/txU2uwMGr1KBoVew9YL8kjZjMyt8STrCRIvjrk=",
+        "lastModified": 1784053942,
+        "narHash": "sha256-uPkA26EPyB5uHsZ9uL/xFFNcuMWkPdq6srmIrazxlNA=",
         "owner": "mattpocock",
         "repo": "skills",
-        "rev": "66898f60e8c744e269f8ce06c2b2b99ce7660d5f",
+        "rev": "e9fcdf95b402d360f90f1db8d776d5dd450f9234",
         "type": "github"
       },
       "original": {
@@ -257,11 +257,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1783776592,
-        "narHash": "sha256-UgCQzxeWI75XM8G+hPrPh+MKzEPjG3SpAj7dtqSbksA=",
+        "lastModified": 1784007870,
+        "narHash": "sha256-djcLt/JJphyNt4eDY9XTly+/WbCK5lqWq9lSgCmJkkQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e7a3ca8092b61ff85b6a45bf863ea2b2d6a661b3",
+        "rev": "18b9261cb3294b6d2a06d03f96872827b8fe2698",
         "type": "github"
       },
       "original": {
@@ -305,11 +305,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1783856661,
-        "narHash": "sha256-ZGP04e+Q6WyQJGA9ZvI5CL6+heGQldbAG9U1T9NGvmU=",
+        "lastModified": 1784011430,
+        "narHash": "sha256-lDebytrYdd47IBLwvNOD+6AGeoqZ78CIKlp70hzW280=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "569d578509928497eddc3fdbf94a799027050be4",
+        "rev": "8eeec934ae0dbeca3d7868c059568a65c08b2fc3",
         "type": "github"
       },
       "original": {
@@ -408,11 +408,11 @@
     "vercel-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1783959504,
-        "narHash": "sha256-aMBdpoLo3SBCrnxRRkY/hZgpRzreicMO+0ZROCVZXX0=",
+        "lastModified": 1784053035,
+        "narHash": "sha256-CfmeaXm465Sh9Xd7TAVHitQ5w3PbOLlP4tL68WPMDkc=",
         "owner": "vercel-labs",
         "repo": "skills",
-        "rev": "cf4a3ea678b7ea5066caa90de94bf2dfacde5538",
+        "rev": "5527c09adc367612b0bffd9c80e3bc28a6b01b6d",
         "type": "github"
       },
       "original": {
