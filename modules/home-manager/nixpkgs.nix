@@ -6,7 +6,6 @@
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
       inputs.self.overlays.pinned-mise
-      inputs.self.overlays.pinned-zed
       inputs.self.overlays.container
       inputs.self.overlays.llm-agents
     ];

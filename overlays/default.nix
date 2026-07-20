@@ -64,15 +64,6 @@ in
     names = [ "mise" ];
   };
 
-  # Pin zed-editor to a specific nixpkgs rev so it stays on a known-good
-  # version independent of the nixpkgs-unstable channel.
-  # Pin: nixpkgs 6edbf1a6a03e75886a6609c088801a0856449e88
-  pinned-zed = pinFromNixpkgs {
-    rev = "6edbf1a6a03e75886a6609c088801a0856449e88";
-    narHash = "sha256-0lkauQbtrljJqwtzTCILPAiHAJyMvn6XDo264moDv30=";
-    names = [ "zed-editor" ];
-  };
-
   # Expose the numtide/llm-agents.nix package set as 'pkgs.llm-agents'.
   # Upstream removed its own overlay output, so we build the namespace from
   # the flake's per-system 'packages' instead.
