@@ -22,7 +22,6 @@ in
   };
 
   home.packages = with pkgs; [
-    unstablePkgs.granted
     unstablePkgs.postgresql_18
     unstablePkgs.gopls
     unstablePkgs.amazon-ecr-credential-helper
@@ -30,6 +29,11 @@ in
   ];
 
   programs = {
+    granted = {
+      enable = true;
+      package = pkgs.unstablePkgs.granted;
+      enableFishIntegration = true;
+    };
     mise = {
       enable = true;
       package = misePackage;
