@@ -11,7 +11,6 @@ let
 in
 
 {
-  imports = [ inputs.home-extra-worktrunk.homeModules.default ];
 
   programs.claude-code = {
     enable = true;
@@ -20,14 +19,6 @@ in
     context = ./conf.d/claude/memory.md;
 
   };
-
-  programs.worktrunk = {
-    enable = true;
-    package = pkgs.unstablePkgs.worktrunk;
-    enableFishIntegration = true;
-  };
-
-  xdg.configFile."worktrunk".source = ./conf.d/worktrunk;
 
   # nono installs the binary (via programs.nono below), and declaratively
   # manages its packs. Versionless: any installed version satisfies the
