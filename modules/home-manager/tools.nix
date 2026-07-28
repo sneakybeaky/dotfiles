@@ -22,6 +22,7 @@
     unstablePkgs.go-task
     unstablePkgs.hydra-check
     unstablePkgs.jq
+    unstablePkgs.lnav
     unstablePkgs.mkcert
     unstablePkgs.ncdu
     unstablePkgs.ngrok
