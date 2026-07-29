@@ -26,6 +26,7 @@ in
     unstablePkgs.gopls
     unstablePkgs.amazon-ecr-credential-helper
     unstablePkgs.gh
+    unstablePkgs.python315
   ];
 
   programs = {
