@@ -136,7 +136,6 @@ func resolveCaches(flagVal string) ([]string, error) {
 	return normalizeCaches([]string{
 		"https://cache.nixos.org",
 		"https://cache.numtide.com",
-		"https://cache.garnix.io",
 	}), nil
 }
 
