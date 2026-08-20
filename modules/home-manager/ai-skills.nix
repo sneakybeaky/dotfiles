@@ -7,15 +7,14 @@ let
 
   # Skill sources are declared in registry/sources/*.nix and pinned in
   # registry/sources.lock.json. Refresh them with `nix run .#skills-sources-lock`.
-  # Each source's skill IDs are namespaced under its registry name (e.g.
-  # `anthropic/pdf`), so the prefix is derived here rather than duplicated in
-  # every manifest.
-  sources = builtins.mapAttrs (name: src: src // { idPrefix = name; }) (
-    agentLib.sourcesFromLock {
-      manifestsDir = ../../registry/sources;
-      lockFile = ../../registry/sources.lock.json;
-    }
-  );
+  # Skill IDs are deliberately NOT namespaced with idPrefix: prefixed IDs
+  # contain a `/`, which nests each skill one directory deeper than Claude's
+  # one-level scan of ~/.claude/skills/<name>/SKILL.md. Cross-source ID
+  # collisions still fail the build (discoverCatalog throws on duplicates).
+  sources = agentLib.sourcesFromLock {
+    manifestsDir = ../../registry/sources;
+    lockFile = ../../registry/sources.lock.json;
+  };
 in
 {
   imports = [ inputs.agent-skills.homeManagerModules.default ];
@@ -26,11 +25,11 @@ in
     inherit sources;
 
     skills.enable = [
-      "anthropic/skill-creator"
-      "mattpocock/teach"
-      "vercel/find-skills"
-      "addyosmani/test-driven-development"
-      "jetbrains/use-modern-go"
+      "skill-creator"
+      "teach"
+      "find-skills"
+      "test-driven-development"
+      "use-modern-go"
     ];
     targets.claude.enable = true;
   };
