@@ -32,11 +32,17 @@
       filter.maxDepth = 1;
     };
 
+    sources.jetbrains = {
+      input = "jetbrains-skills";
+      filter.maxDepth = 1;
+    };
+
     skills.enable = [
       "skill-creator"
       "teach"
       "find-skills"
       "test-driven-development"
+      "use-modern-go"
     ];
     targets.claude.enable = true;
   };
