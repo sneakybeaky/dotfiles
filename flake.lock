@@ -170,6 +170,22 @@
         "type": "github"
       }
     },
+    "jetbrains-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787161192,
+        "narHash": "sha256-SR0OULlIW+sHm+hD6uZSc7RREucS1JtKRjlEtltvpwY=",
+        "owner": "JetBrains",
+        "repo": "go-modern-guidelines",
+        "rev": "40781f167719913666fe2a7dc1c77ea6f256df0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JetBrains",
+        "repo": "go-modern-guidelines",
+        "type": "github"
+      }
+    },
     "llm-agents": {
       "inputs": {
         "bun2nix": "bun2nix",
@@ -179,11 +195,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1787205996,
-        "narHash": "sha256-P1/6bZ4SHjdAZ+TorVtceqI1cv6jwGeumfDwrdqjj3Q=",
+        "lastModified": 1787216589,
+        "narHash": "sha256-XtBw86QXg9HtTU1IlD3yTpIHAG0r5df6SCrpDVG/1Cc=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "20766586959e0dcc2f9e7cff6d49b0c710de30d6",
+        "rev": "5aad5f64e621fc35fed0fddcc2b6e17ab662cf78",
         "type": "github"
       },
       "original": {
@@ -195,11 +211,11 @@
     "mattpocock-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1787144958,
-        "narHash": "sha256-BAhmwFuEZPKsnSCwZ9NzPG5b7alCXa2/f/LXSMuJX7o=",
+        "lastModified": 1787222114,
+        "narHash": "sha256-Zg64vWsmtVk7WCH/f+bifju+L8yHeAwYbDNh6Ah43V0=",
         "owner": "mattpocock",
         "repo": "skills",
-        "rev": "885e2ca4d842d139e9aef4e48d366c63cb1b8013",
+        "rev": "0ab1b63a410a03d3627979a109c8695de27af954",
         "type": "github"
       },
       "original": {
@@ -278,6 +294,7 @@
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
         "home-manager": "home-manager_2",
+        "jetbrains-skills": "jetbrains-skills",
         "llm-agents": "llm-agents",
         "mattpocock-skills": "mattpocock-skills",
         "nixpkgs": "nixpkgs_3",

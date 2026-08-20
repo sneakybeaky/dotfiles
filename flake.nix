@@ -49,6 +49,11 @@
       flake = false;
     };
 
+    jetbrains-skills = {
+      url = "github:JetBrains/go-modern-guidelines";
+      flake = false;
+    };
+
   };
 
   outputs =
