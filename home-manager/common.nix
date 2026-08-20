@@ -7,22 +7,9 @@
   ...
 }:
 {
-  imports = [
-    inputs.self.homeManagerModules.nixpkgs
-    inputs.self.homeManagerModules.tools
-    inputs.self.homeManagerModules.ai
-    inputs.self.homeManagerModules.nono
-    inputs.self.homeManagerModules.starship
-    inputs.self.homeManagerModules.fish
-    inputs.self.homeManagerModules.atuin
-    inputs.self.homeManagerModules.zed
-    inputs.self.homeManagerModules.eza
-    inputs.self.homeManagerModules.direnv
-    inputs.self.homeManagerModules.television
-    inputs.self.homeManagerModules.fd
-    inputs.self.homeManagerModules.bat
-    inputs.self.homeManagerModules.fonts
-  ];
+  # Import every shared module; the set is defined in
+  # modules/home-manager/default.nix.
+  imports = builtins.attrValues inputs.self.homeManagerModules.shared;
 
   home.packages = [
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.nix-cache-check
