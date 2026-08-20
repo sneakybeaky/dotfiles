@@ -7,5 +7,6 @@
   };
 
   subdir = "skills";
+  idPrefix = "vercel";
   filter.maxDepth = 1;
 }

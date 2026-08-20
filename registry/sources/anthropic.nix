@@ -7,5 +7,6 @@
   };
 
   subdir = "skills";
+  idPrefix = "anthropic";
   filter.maxDepth = 1;
 }

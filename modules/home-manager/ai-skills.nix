@@ -21,11 +21,11 @@ in
     inherit sources;
 
     skills.enable = [
-      "skill-creator"
-      "teach"
-      "find-skills"
-      "test-driven-development"
-      "use-modern-go"
+      "anthropic/skill-creator"
+      "mattpocock/teach"
+      "vercel/find-skills"
+      "addyosmani/test-driven-development"
+      "jetbrains/use-modern-go"
     ];
     targets.claude.enable = true;
   };

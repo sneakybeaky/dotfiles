@@ -7,5 +7,6 @@
   };
 
   subdir = "plugin/skills";
+  idPrefix = "jetbrains";
   filter.maxDepth = 1;
 }

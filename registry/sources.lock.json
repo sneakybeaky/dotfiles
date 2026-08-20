@@ -5,7 +5,7 @@
         "maxDepth": 1,
         "nameRegex": null
       },
-      "idPrefix": null,
+      "idPrefix": "addyosmani",
       "pin": {
         "at": null,
         "branch": "main",
@@ -24,7 +24,7 @@
         "maxDepth": 1,
         "nameRegex": null
       },
-      "idPrefix": null,
+      "idPrefix": "anthropic",
       "pin": {
         "at": null,
         "branch": "main",
@@ -43,7 +43,7 @@
         "maxDepth": 1,
         "nameRegex": null
       },
-      "idPrefix": null,
+      "idPrefix": "jetbrains",
       "pin": {
         "at": null,
         "branch": "main",
@@ -62,7 +62,7 @@
         "maxDepth": 1,
         "nameRegex": null
       },
-      "idPrefix": null,
+      "idPrefix": "mattpocock",
       "pin": {
         "at": null,
         "branch": "main",
@@ -81,7 +81,7 @@
         "maxDepth": 1,
         "nameRegex": null
       },
-      "idPrefix": null,
+      "idPrefix": "vercel",
       "pin": {
         "at": null,
         "branch": "main",
