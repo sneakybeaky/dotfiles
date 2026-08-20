@@ -34,6 +34,7 @@
 
     sources.jetbrains = {
       input = "jetbrains-skills";
+      subdir = "plugin/skills";
       filter.maxDepth = 1;
     };
 
