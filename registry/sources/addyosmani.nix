@@ -7,6 +7,5 @@
   };
 
   subdir = "skills";
-  idPrefix = "addyosmani";
   filter.maxDepth = 1;
 }

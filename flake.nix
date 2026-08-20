@@ -119,31 +119,24 @@
       homeConfigurations =
         let
 
-          # Default home-manager configuration for MacBooks
-          defaultMac = home-manager.lib.homeManagerConfiguration {
-            # Home-manager requires 'pkgs' instance
-            pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-            extraSpecialArgs = {
-              inherit inputs;
+          # Build a standalone home-manager configuration for an aarch64-darwin
+          # host from a single entrypoint module.
+          mkHome =
+            module:
+            home-manager.lib.homeManagerConfiguration {
+              # Home-manager requires 'pkgs' instance
+              pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+              modules = [ module ];
             };
-            modules = [
-              ./home-manager/home.nix
-            ];
-          };
 
         in
         {
-          "jon@Jons-MacBook-Pro-72.local" = defaultMac;
-          "jon@Jons-M1-MacBook-Pro.local" = defaultMac;
-          "jon.barber@C4GV140CC2" = home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-            extraSpecialArgs = {
-              inherit inputs;
-            };
-            modules = [
-              ./home-manager/work.nix
-            ];
-          };
+          "jon@Jons-MacBook-Pro-72.local" = mkHome ./home-manager/home.nix;
+          "jon@Jons-M1-MacBook-Pro.local" = mkHome ./home-manager/home.nix;
+          "jon.barber@C4GV140CC2" = mkHome ./home-manager/work.nix;
         };
     };
 }

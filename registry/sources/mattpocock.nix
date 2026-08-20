@@ -7,6 +7,5 @@
   };
 
   subdir = "skills/productivity";
-  idPrefix = "mattpocock";
   filter.maxDepth = 1;
 }
