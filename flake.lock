@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "addyosmani-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1786733427,
-        "narHash": "sha256-SA8dpLTYhkL2sqM8HqwgY3efkvlnFPUyeRTvxYvz1n4=",
-        "owner": "addyosmani",
-        "repo": "agent-skills",
-        "rev": "df1edb2e05487d0aa6d93c747141e0aed1187f25",
-        "type": "github"
-      },
-      "original": {
-        "owner": "addyosmani",
-        "repo": "agent-skills",
-        "type": "github"
-      }
-    },
     "agent-skills": {
       "inputs": {
         "blueprint": "blueprint",
@@ -33,22 +17,6 @@
       "original": {
         "owner": "Kyure-A",
         "repo": "agent-skills-nix",
-        "type": "github"
-      }
-    },
-    "anthropic-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1787068925,
-        "narHash": "sha256-0ZtHTJVHeW8jIprKgCo/yU2ZI2cZxUqD3Riet3UWdt8=",
-        "owner": "anthropics",
-        "repo": "skills",
-        "rev": "0a64e398ec6bb34a494f0c347e8ccae53a862f8e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "anthropics",
-        "repo": "skills",
         "type": "github"
       }
     },
@@ -170,22 +138,6 @@
         "type": "github"
       }
     },
-    "jetbrains-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1787161192,
-        "narHash": "sha256-SR0OULlIW+sHm+hD6uZSc7RREucS1JtKRjlEtltvpwY=",
-        "owner": "JetBrains",
-        "repo": "go-modern-guidelines",
-        "rev": "40781f167719913666fe2a7dc1c77ea6f256df0a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "JetBrains",
-        "repo": "go-modern-guidelines",
-        "type": "github"
-      }
-    },
     "llm-agents": {
       "inputs": {
         "bun2nix": "bun2nix",
@@ -205,22 +157,6 @@
       "original": {
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "type": "github"
-      }
-    },
-    "mattpocock-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1787222114,
-        "narHash": "sha256-Zg64vWsmtVk7WCH/f+bifju+L8yHeAwYbDNh6Ah43V0=",
-        "owner": "mattpocock",
-        "repo": "skills",
-        "rev": "0ab1b63a410a03d3627979a109c8695de27af954",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mattpocock",
-        "repo": "skills",
         "type": "github"
       }
     },
@@ -290,16 +226,11 @@
     },
     "root": {
       "inputs": {
-        "addyosmani-skills": "addyosmani-skills",
         "agent-skills": "agent-skills",
-        "anthropic-skills": "anthropic-skills",
         "home-manager": "home-manager_2",
-        "jetbrains-skills": "jetbrains-skills",
         "llm-agents": "llm-agents",
-        "mattpocock-skills": "mattpocock-skills",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-unstable": "nixpkgs-unstable",
-        "vercel-skills": "vercel-skills"
+        "nixpkgs-unstable": "nixpkgs-unstable"
       }
     },
     "systems": {
@@ -350,22 +281,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "vercel-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1787084911,
-        "narHash": "sha256-qD+gGPYjgbArf1Nz5rtlJVCS/2KNTuspag/B079l014=",
-        "owner": "vercel-labs",
-        "repo": "skills",
-        "rev": "435076e78988e1e6ec40d00b0b1d76bdbbc5419a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vercel-labs",
-        "repo": "skills",
         "type": "github"
       }
     }

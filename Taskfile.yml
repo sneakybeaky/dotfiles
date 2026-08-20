@@ -33,6 +33,11 @@ tasks:
       - task: apply
       - task: changed
 
+  update-skills:
+    desc: Update agent skill revisions in the source registry lock
+    cmds:
+      - nix run .#skills-sources-lock
+
   changed:
     desc: Show what changed with last update
     cmds:

@@ -28,32 +28,10 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
 
     # Agent Skills
+    # Skill repositories are managed via the source registry
+    # (registry/sources/*.nix + registry/sources.lock.json) rather than as
+    # flake inputs. Refresh them with `nix run .#skills-sources-lock`.
     agent-skills.url = "github:Kyure-A/agent-skills-nix";
-    mattpocock-skills = {
-      url = "github:mattpocock/skills";
-      flake = false;
-    };
-
-    anthropic-skills = {
-      url = "github:anthropics/skills";
-      flake = false;
-    };
-
-    vercel-skills = {
-      url = "github:vercel-labs/skills";
-      flake = false;
-    };
-
-    addyosmani-skills = {
-      url = "github:addyosmani/agent-skills";
-      flake = false;
-    };
-
-    jetbrains-skills = {
-      url = "github:JetBrains/go-modern-guidelines";
-      flake = false;
-    };
-
   };
 
   outputs =
@@ -83,6 +61,27 @@
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       # Formatter for your nix files, available through 'nix fmt'
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
+
+      # Refresh the agent-skills source registry lock via
+      # 'nix run .#skills-sources-lock'.
+      apps = forAllSystems (
+        system:
+        let
+          agentLib = inputs.agent-skills.lib.agent-skills;
+          sourceLockProgram = agentLib.mkSourceLockProgram {
+            pkgs = nixpkgs.legacyPackages.${system};
+            # npins >= 0.5 is required to emit the v8 source lock schema that
+            # agent-skills-nix consumes; nixpkgs 26.05 still ships 0.4.x.
+            npins = inputs.nixpkgs-unstable.legacyPackages.${system}.npins;
+          };
+        in
+        {
+          skills-sources-lock = {
+            type = "app";
+            program = "${sourceLockProgram}/bin/skills-sources-lock";
+          };
+        }
+      );
 
       # Sandboxed checks, run via 'nix flake check'.
       checks = forAllSystems (

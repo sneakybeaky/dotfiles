@@ -2,41 +2,23 @@
   inputs,
   ...
 }:
+let
+  agentLib = inputs.agent-skills.lib.agent-skills;
+
+  # Skill sources are declared in registry/sources/*.nix and pinned in
+  # registry/sources.lock.json. Refresh them with `nix run .#skills-sources-lock`.
+  sources = agentLib.sourcesFromLock {
+    manifestsDir = ../../registry/sources;
+    lockFile = ../../registry/sources.lock.json;
+  };
+in
 {
   imports = [ inputs.agent-skills.homeManagerModules.default ];
 
   programs.agent-skills = {
     enable = true;
 
-    sources.mattpocock = {
-      input = "mattpocock-skills";
-      subdir = "skills/productivity";
-      filter.maxDepth = 1;
-    };
-
-    sources.anthropic = {
-      input = "anthropic-skills";
-      subdir = "skills";
-      filter.maxDepth = 1;
-    };
-
-    sources.vercel = {
-      input = "vercel-skills";
-      subdir = "skills";
-      filter.maxDepth = 1;
-    };
-
-    sources.addyosmani = {
-      input = "addyosmani-skills";
-      subdir = "skills";
-      filter.maxDepth = 1;
-    };
-
-    sources.jetbrains = {
-      input = "jetbrains-skills";
-      subdir = "plugin/skills";
-      filter.maxDepth = 1;
-    };
+    inherit sources;
 
     skills.enable = [
       "skill-creator"

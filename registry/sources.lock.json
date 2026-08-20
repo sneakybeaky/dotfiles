@@ -1,0 +1,170 @@
+{
+  "manifests": {
+    "addyosmani": {
+      "filter": {
+        "maxDepth": 1,
+        "nameRegex": null
+      },
+      "idPrefix": null,
+      "pin": {
+        "at": null,
+        "branch": "main",
+        "owner": "addyosmani",
+        "preReleases": false,
+        "releasePrefix": null,
+        "repo": "agent-skills",
+        "submodules": false,
+        "type": "github",
+        "versionUpperBound": null
+      },
+      "subdir": "skills"
+    },
+    "anthropic": {
+      "filter": {
+        "maxDepth": 1,
+        "nameRegex": null
+      },
+      "idPrefix": null,
+      "pin": {
+        "at": null,
+        "branch": "main",
+        "owner": "anthropics",
+        "preReleases": false,
+        "releasePrefix": null,
+        "repo": "skills",
+        "submodules": false,
+        "type": "github",
+        "versionUpperBound": null
+      },
+      "subdir": "skills"
+    },
+    "jetbrains": {
+      "filter": {
+        "maxDepth": 1,
+        "nameRegex": null
+      },
+      "idPrefix": null,
+      "pin": {
+        "at": null,
+        "branch": "main",
+        "owner": "JetBrains",
+        "preReleases": false,
+        "releasePrefix": null,
+        "repo": "go-modern-guidelines",
+        "submodules": false,
+        "type": "github",
+        "versionUpperBound": null
+      },
+      "subdir": "plugin/skills"
+    },
+    "mattpocock": {
+      "filter": {
+        "maxDepth": 1,
+        "nameRegex": null
+      },
+      "idPrefix": null,
+      "pin": {
+        "at": null,
+        "branch": "main",
+        "owner": "mattpocock",
+        "preReleases": false,
+        "releasePrefix": null,
+        "repo": "skills",
+        "submodules": false,
+        "type": "github",
+        "versionUpperBound": null
+      },
+      "subdir": "skills/productivity"
+    },
+    "vercel": {
+      "filter": {
+        "maxDepth": 1,
+        "nameRegex": null
+      },
+      "idPrefix": null,
+      "pin": {
+        "at": null,
+        "branch": "main",
+        "owner": "vercel-labs",
+        "preReleases": false,
+        "releasePrefix": null,
+        "repo": "skills",
+        "submodules": false,
+        "type": "github",
+        "versionUpperBound": null
+      },
+      "subdir": "skills"
+    }
+  },
+  "npins": {
+    "pins": {
+      "addyosmani": {
+        "branch": "main",
+        "hash": "sha256-SA8dpLTYhkL2sqM8HqwgY3efkvlnFPUyeRTvxYvz1n4=",
+        "repository": {
+          "owner": "addyosmani",
+          "repo": "agent-skills",
+          "type": "GitHub"
+        },
+        "revision": "df1edb2e05487d0aa6d93c747141e0aed1187f25",
+        "submodules": false,
+        "type": "Git",
+        "url": "https://github.com/addyosmani/agent-skills/archive/df1edb2e05487d0aa6d93c747141e0aed1187f25.tar.gz"
+      },
+      "anthropic": {
+        "branch": "main",
+        "hash": "sha256-0ZtHTJVHeW8jIprKgCo/yU2ZI2cZxUqD3Riet3UWdt8=",
+        "repository": {
+          "owner": "anthropics",
+          "repo": "skills",
+          "type": "GitHub"
+        },
+        "revision": "0a64e398ec6bb34a494f0c347e8ccae53a862f8e",
+        "submodules": false,
+        "type": "Git",
+        "url": "https://github.com/anthropics/skills/archive/0a64e398ec6bb34a494f0c347e8ccae53a862f8e.tar.gz"
+      },
+      "jetbrains": {
+        "branch": "main",
+        "hash": "sha256-SR0OULlIW+sHm+hD6uZSc7RREucS1JtKRjlEtltvpwY=",
+        "repository": {
+          "owner": "JetBrains",
+          "repo": "go-modern-guidelines",
+          "type": "GitHub"
+        },
+        "revision": "40781f167719913666fe2a7dc1c77ea6f256df0a",
+        "submodules": false,
+        "type": "Git",
+        "url": "https://github.com/JetBrains/go-modern-guidelines/archive/40781f167719913666fe2a7dc1c77ea6f256df0a.tar.gz"
+      },
+      "mattpocock": {
+        "branch": "main",
+        "hash": "sha256-Zg64vWsmtVk7WCH/f+bifju+L8yHeAwYbDNh6Ah43V0=",
+        "repository": {
+          "owner": "mattpocock",
+          "repo": "skills",
+          "type": "GitHub"
+        },
+        "revision": "0ab1b63a410a03d3627979a109c8695de27af954",
+        "submodules": false,
+        "type": "Git",
+        "url": "https://github.com/mattpocock/skills/archive/0ab1b63a410a03d3627979a109c8695de27af954.tar.gz"
+      },
+      "vercel": {
+        "branch": "main",
+        "hash": "sha256-qD+gGPYjgbArf1Nz5rtlJVCS/2KNTuspag/B079l014=",
+        "repository": {
+          "owner": "vercel-labs",
+          "repo": "skills",
+          "type": "GitHub"
+        },
+        "revision": "435076e78988e1e6ec40d00b0b1d76bdbbc5419a",
+        "submodules": false,
+        "type": "Git",
+        "url": "https://github.com/vercel-labs/skills/archive/435076e78988e1e6ec40d00b0b1d76bdbbc5419a.tar.gz"
+      }
+    },
+    "version": 8
+  },
+  "schemaVersion": 1
+}
