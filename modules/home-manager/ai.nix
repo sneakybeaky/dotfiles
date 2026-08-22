@@ -46,6 +46,7 @@ in
     pkgs.llm-agents.agent-browser
     pkgs.llm-agents.skills
     pkgs.llm-agents.herdr
+    pkgs.llm-agents.hermes-agent
   ];
 
 }
