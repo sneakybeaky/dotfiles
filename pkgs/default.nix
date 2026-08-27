@@ -3,4 +3,5 @@
 pkgs: {
   # example = pkgs.callPackage ./example { };
   nix-cache-check = pkgs.callPackage ./nix-cache-check { };
+  sentry = pkgs.callPackage ./sentry { };
 }

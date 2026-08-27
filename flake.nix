@@ -54,11 +54,23 @@
       # pass to it, with each system as an argument
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
+      # An instantiated nixpkgs with unfree allowed. 'nixpkgs.config' from
+      # modules/home-manager/nixpkgs.nix cannot apply to an already-built pkgs
+      # set (only overlays can be appended after the fact), so the config has to
+      # be set here instead. pkgs/sentry is FSL-1.1, which nixpkgs treats as
+      # unfree, and would otherwise refuse to build.
+      pkgsFor =
+        system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+
     in
     {
       # Your custom packages
       # Accessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+      packages = forAllSystems (system: import ./pkgs (pkgsFor system));
       # Formatter for your nix files, available through 'nix fmt'
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
 
@@ -87,7 +99,7 @@
       checks = forAllSystems (
         system:
         let
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = pkgsFor system;
         in
         {
           # Acceptance tests for the nono pack reconcile logic (no network).
@@ -103,6 +115,30 @@
               }
               ''
                 bash ${./modules/home-manager/nono}/tests/reconcile_test.sh
+                touch "$out"
+              '';
+
+          # The packaged sentry CLI must actually run on this system and report
+          # the version the derivation pins.
+          sentry =
+            let
+              sentry = self.packages.${system}.sentry;
+            in
+            pkgs.runCommand "sentry-version-test"
+              {
+                nativeBuildInputs = [ sentry ];
+              }
+              ''
+                # The bundled runtime expects a writable HOME.
+                export HOME="$(mktemp -d)"
+                got="$(sentry --version)"
+                want="${sentry.version}"
+                if [ "$got" != "$want" ]; then
+                  echo "sentry reported the wrong version" >&2
+                  echo "  want: $want" >&2
+                  echo "  got:  $got" >&2
+                  exit 1
+                fi
                 touch "$out"
               '';
         }
@@ -125,7 +161,7 @@
             module:
             home-manager.lib.homeManagerConfiguration {
               # Home-manager requires 'pkgs' instance
-              pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+              pkgs = pkgsFor "aarch64-darwin";
               extraSpecialArgs = {
                 inherit inputs;
               };
