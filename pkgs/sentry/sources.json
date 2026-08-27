@@ -1,0 +1,22 @@
+{
+  "repo": "getsentry/cli",
+  "version": "0.43.0",
+  "platforms": {
+    "aarch64-darwin": {
+      "asset": "sentry-darwin-arm64.gz",
+      "hash": "sha256-x7GwL7/LB6F46IpS3EVzKOND75VhstglBALrnIwSNHY="
+    },
+    "x86_64-darwin": {
+      "asset": "sentry-darwin-x64.gz",
+      "hash": "sha256-40Mdzff83b8qyrD0nFAZiaDLGVxW46AjS8CJD3kXhvs="
+    },
+    "aarch64-linux": {
+      "asset": "sentry-linux-arm64.gz",
+      "hash": "sha256-xNBZ3lZ/u6lEXEBmb/Nytu+RlqLVIxB1SALbT0adNhw="
+    },
+    "x86_64-linux": {
+      "asset": "sentry-linux-x64.gz",
+      "hash": "sha256-MAPXijwHQKzDlYQAnKLdbyjanwNlyyhT2JxDpCofFgs="
+    }
+  }
+}

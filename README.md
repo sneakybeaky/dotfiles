@@ -37,6 +37,8 @@ Managed with [go-task](https://taskfile.dev); run `task` to list them.
 | `task apply` | Build and activate the configuration |
 | `task update` | Update flake inputs, apply, and show what changed |
 | `task update-skills` | Refresh agent skill revisions in the source registry lock |
+| `task sentry-check` | Check for a newer sentry CLI release (exits 1 if one exists) |
+| `task sentry-update` | Pin `pkgs/sentry` to the latest sentry CLI release |
 | `task changed` | Show what changed with the last update |
 | `task deps` | Show flake input versions (revisions, dates, nixpkgs release) |
 | `task cache-check` | Show which packages are missing from binary caches |
@@ -47,3 +49,18 @@ Managed with [go-task](https://taskfile.dev); run `task` to list them.
 Skill repositories are declared in `registry/sources/*.nix` and pinned in
 `registry/sources.lock.json`. Refresh the pins with `task update-skills` (or
 `nix run .#skills-sources-lock`), then review and commit the updated lock file.
+
+## Pinned upstream binaries
+
+`pkgs/sentry` tracks a tool that is not in nixpkgs, so its version and
+per-platform hashes are pinned in `pkgs/sentry/sources.json`. Do not edit that
+file by hand.
+
+- `task sentry-check` reports whether a newer release exists, and exits 1 if so,
+  which makes it usable as a CI or cron trigger.
+- `task sentry-update` rewrites the pin, then runs the flake check that executes
+  the new binary and asserts it reports the pinned version. Review and commit
+  the updated `sources.json`.
+
+The pin is also exposed as `passthru.updateScript`, the nixpkgs convention, so
+`nix-update -F -u sentry` drives the same script.

@@ -8,49 +8,36 @@
 #
 # We fetch the gzipped asset: 27MB compressed against 102MB uncompressed.
 #
-# To bump: change `version` below, then refresh each hash with
-#   nix-prefetch-url https://github.com/getsentry/cli/releases/download/<version>/<asset>
-#   nix hash to-sri --type sha256 <returned-hash>
+# The version and per-platform hashes live in ./sources.json. Do not edit that
+# file by hand — run `task sentry-update` (or `nix run .#sentry-update`), which
+# is also wired up as passthru.updateScript below.
 {
   lib,
   stdenvNoCC,
   fetchurl,
   gzip,
+  writeShellApplication,
+  curl,
+  jq,
+  coreutils,
 }:
 let
-  version = "0.43.0";
-
-  # Upstream publishes one self-contained executable per platform. There is no
-  # 32-bit Linux build, so i686-linux is deliberately absent.
-  sources = {
-    aarch64-darwin = {
-      asset = "sentry-darwin-arm64.gz";
-      hash = "sha256-x7GwL7/LB6F46IpS3EVzKOND75VhstglBALrnIwSNHY=";
-    };
-    x86_64-darwin = {
-      asset = "sentry-darwin-x64.gz";
-      hash = "sha256-40Mdzff83b8qyrD0nFAZiaDLGVxW46AjS8CJD3kXhvs=";
-    };
-    aarch64-linux = {
-      asset = "sentry-linux-arm64.gz";
-      hash = "sha256-xNBZ3lZ/u6lEXEBmb/Nytu+RlqLVIxB1SALbT0adNhw=";
-    };
-    x86_64-linux = {
-      asset = "sentry-linux-x64.gz";
-      hash = "sha256-MAPXijwHQKzDlYQAnKLdbyjanwNlyyhT2JxDpCofFgs=";
-    };
-  };
+  # The pin, shared with update.sh so there is one source of truth for the
+  # version, the asset names and their hashes.
+  pin = lib.importJSON ./sources.json;
 
   inherit (stdenvNoCC.hostPlatform) system;
 
-  source = sources.${system} or (throw "sentry: no upstream release build for ${system}");
+  # Upstream publishes no 32-bit Linux build, so i686-linux is absent from the
+  # pin. Kept lazy: this only fires on an actual build for such a system.
+  source = pin.platforms.${system} or (throw "sentry: no upstream release build for ${system}");
 in
 stdenvNoCC.mkDerivation {
   pname = "sentry";
-  inherit version;
+  inherit (pin) version;
 
   src = fetchurl {
-    url = "https://github.com/getsentry/cli/releases/download/${version}/${source.asset}";
+    url = "https://github.com/${pin.repo}/releases/download/${pin.version}/${source.asset}";
     inherit (source) hash;
   };
 
@@ -69,16 +56,29 @@ stdenvNoCC.mkDerivation {
     runHook postInstall
   '';
 
+  # The nixpkgs convention for packages whose pin a generic updater cannot
+  # rewrite: nix-update -F -u sentry will run this. Wrapped so it is
+  # shellcheck-validated at build time and gets its tools declaratively.
+  passthru.updateScript = lib.getExe (writeShellApplication {
+    name = "sentry-update";
+    runtimeInputs = [
+      curl
+      jq
+      coreutils
+    ];
+    text = builtins.readFile ./update.sh;
+  });
+
   meta = {
     description = "Sentry CLI for developers and agents";
     homepage = "https://cli.sentry.dev/";
     downloadPage = "https://github.com/getsentry/cli/releases";
-    changelog = "https://github.com/getsentry/cli/releases/tag/${version}";
+    changelog = "https://github.com/${pin.repo}/releases/tag/${pin.version}";
     # Source-available, not OSI open source: converts to Apache 2.0 two years
     # after each release. nixpkgs marks this unfree, hence allowUnfree.
     license = lib.licenses.fsl11Asl20;
     sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
     mainProgram = "sentry";
-    platforms = lib.attrNames sources;
+    platforms = lib.attrNames pin.platforms;
   };
 }

@@ -38,6 +38,20 @@ tasks:
     cmds:
       - nix run .#skills-sources-lock
 
+  sentry-check:
+    desc: Check whether a newer sentry CLI release exists (exits 1 if so)
+    cmds:
+      - nix run .#sentry-check
+
+  sentry-update:
+    desc: Pin pkgs/sentry to the latest sentry CLI release and verify it runs
+    cmds:
+      - nix run .#sentry-update
+      - nix build --no-link .#checks.{{.SYSTEM}}.sentry
+    vars:
+      SYSTEM:
+        sh: nix eval --raw --impure --expr builtins.currentSystem
+
   changed:
     desc: Show what changed with last update
     cmds:

@@ -79,9 +79,10 @@
       apps = forAllSystems (
         system:
         let
+          pkgs = pkgsFor system;
           agentLib = inputs.agent-skills.lib.agent-skills;
           sourceLockProgram = agentLib.mkSourceLockProgram {
-            pkgs = nixpkgs.legacyPackages.${system};
+            inherit pkgs;
             # npins >= 0.5 is required to emit the v8 source lock schema that
             # agent-skills-nix consumes; nixpkgs 26.05 still ships 0.4.x.
             npins = inputs.nixpkgs-unstable.legacyPackages.${system}.npins;
@@ -91,6 +92,20 @@
           skills-sources-lock = {
             type = "app";
             program = "${sourceLockProgram}/bin/skills-sources-lock";
+          };
+
+          # Both wrap the same script (one source of truth for "what is the
+          # latest release"); --check only reports, and exits 1 when a newer
+          # release exists.
+          sentry-check = {
+            type = "app";
+            program = "${pkgs.writeShellScript "sentry-check" ''
+              exec ${self.packages.${system}.sentry.updateScript} --check
+            ''}";
+          };
+          sentry-update = {
+            type = "app";
+            program = self.packages.${system}.sentry.updateScript;
           };
         }
       );
@@ -115,6 +130,21 @@
               }
               ''
                 bash ${./modules/home-manager/nono}/tests/reconcile_test.sh
+                touch "$out"
+              '';
+
+          # Acceptance tests for the sentry release updater (no network).
+          sentry-update =
+            pkgs.runCommand "sentry-update-test"
+              {
+                nativeBuildInputs = [
+                  pkgs.bash
+                  pkgs.jq
+                  pkgs.coreutils
+                ];
+              }
+              ''
+                bash ${./pkgs/sentry}/tests/update_test.sh
                 touch "$out"
               '';
 
