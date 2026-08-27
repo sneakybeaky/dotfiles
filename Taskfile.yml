@@ -29,6 +29,7 @@ tasks:
   update:
     desc: Update packages
     cmds:
+      - task: sentry-update
       - nix flake update
       - task: apply
       - task: changed
