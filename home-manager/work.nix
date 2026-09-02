@@ -27,6 +27,7 @@ in
     unstablePkgs.amazon-ecr-credential-helper
     unstablePkgs.gh
     unstablePkgs.python315
+    unstablePkgs.firecrawl-cli
     # Sentry's TypeScript CLI, from pkgs/sentry (not in nixpkgs).
     sentry
   ];
