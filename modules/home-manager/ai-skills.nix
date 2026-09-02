@@ -30,6 +30,7 @@ in
       "find-skills"
       "test-driven-development"
       "use-modern-go"
+      "firecrawl-build-search"
     ];
     targets.claude.enable = true;
   };
