@@ -95,6 +95,25 @@
       },
       "subdir": "skills/productivity"
     },
+    "refoundai": {
+      "filter": {
+        "maxDepth": 1,
+        "nameRegex": null
+      },
+      "idPrefix": null,
+      "pin": {
+        "at": null,
+        "branch": "main",
+        "owner": "RefoundAI",
+        "preReleases": false,
+        "releasePrefix": null,
+        "repo": "lenny-skills",
+        "submodules": false,
+        "type": "github",
+        "versionUpperBound": null
+      },
+      "subdir": "skills"
+    },
     "vercel": {
       "filter": {
         "maxDepth": 1,
@@ -119,81 +138,94 @@
     "pins": {
       "addyosmani": {
         "branch": "main",
-        "hash": "sha256-cETMU2Pfha4cXWTORfu0wXJXOTrAmmEk3GDY2lAoQnw=",
+        "hash": "sha256-mliEs4QGO3W1vm5i4PfTNXCGtYVNUmEedWVmt5l7sxY=",
         "repository": {
           "owner": "addyosmani",
           "repo": "agent-skills",
           "type": "GitHub"
         },
-        "revision": "d2c37ef6225dd8726cdd369a8030307f48592d26",
+        "revision": "dc27a9c2e13721158157632de61b4106c6c2a2a1",
         "submodules": false,
         "type": "Git",
-        "url": "https://github.com/addyosmani/agent-skills/archive/d2c37ef6225dd8726cdd369a8030307f48592d26.tar.gz"
+        "url": "https://github.com/addyosmani/agent-skills/archive/dc27a9c2e13721158157632de61b4106c6c2a2a1.tar.gz"
       },
       "anthropic": {
         "branch": "main",
-        "hash": "sha256-xaxkXFpzH4s2OIOcZqPy+HzfRAy2HbKpagjMhY+uinA=",
+        "hash": "sha256-tI4bTTBfI1ylltklGyiyA7pLoKXEWtrT6lrmwrpLbCw=",
         "repository": {
           "owner": "anthropics",
           "repo": "skills",
           "type": "GitHub"
         },
-        "revision": "53048666b05b4799081517d00e09e0a2dd688678",
+        "revision": "34040c9c568585f6929bedeaad110ad08f079624",
         "submodules": false,
         "type": "Git",
-        "url": "https://github.com/anthropics/skills/archive/53048666b05b4799081517d00e09e0a2dd688678.tar.gz"
+        "url": "https://github.com/anthropics/skills/archive/34040c9c568585f6929bedeaad110ad08f079624.tar.gz"
       },
       "firecrawl-build": {
         "branch": "main",
-        "hash": "sha256-opUg+rc+lVzVSHOtIsokwMozr1kzUpy+drNBdcVO1Hs=",
+        "hash": "sha256-k/xydZcPAzzUz1+KQupoF9yp8DhrLNU+WZYL+WzsL+Y=",
         "repository": {
           "owner": "firecrawl",
           "repo": "skills",
           "type": "GitHub"
         },
-        "revision": "f6c9b2dd6384e0f05f713727ed18ba9db94d5191",
+        "revision": "52c21e61fa0b2662015c41ee353e9f5af6403c16",
         "submodules": false,
         "type": "Git",
-        "url": "https://github.com/firecrawl/skills/archive/f6c9b2dd6384e0f05f713727ed18ba9db94d5191.tar.gz"
+        "url": "https://github.com/firecrawl/skills/archive/52c21e61fa0b2662015c41ee353e9f5af6403c16.tar.gz"
       },
       "jetbrains": {
         "branch": "main",
-        "hash": "sha256-mZR6k1nBsv+VQCgMwNWEiPyp99b+2GXiqQfVKE+bdN4=",
+        "hash": "sha256-Gm96NA55N2+YHH/3NW+qAeiqYkrsZeBT8EVgLP0Lx34=",
         "repository": {
           "owner": "JetBrains",
           "repo": "go-modern-guidelines",
           "type": "GitHub"
         },
-        "revision": "91a30b36f05bb6424bd77e9817811c0e9c003aa2",
+        "revision": "155dc7ca10da5e1f6c841503086957b1b37f5815",
         "submodules": false,
         "type": "Git",
-        "url": "https://github.com/JetBrains/go-modern-guidelines/archive/91a30b36f05bb6424bd77e9817811c0e9c003aa2.tar.gz"
+        "url": "https://github.com/JetBrains/go-modern-guidelines/archive/155dc7ca10da5e1f6c841503086957b1b37f5815.tar.gz"
       },
       "mattpocock": {
         "branch": "main",
-        "hash": "sha256-N5tpUIHO2VFeJntBTl6/VLDIVpqoshwFxNJlfXXUwsQ=",
+        "hash": "sha256-L3CpIT2DeI+fUFl9fcygojtQo2DzEen69rMD1XqR1vM=",
         "repository": {
           "owner": "mattpocock",
           "repo": "skills",
           "type": "GitHub"
         },
-        "revision": "6654f6b60cd9d5be8b54c6fafe44346dabeb3b76",
+        "revision": "c55ee46073ed923f86ce59a5eb3b6d895095d1b7",
         "submodules": false,
         "type": "Git",
-        "url": "https://github.com/mattpocock/skills/archive/6654f6b60cd9d5be8b54c6fafe44346dabeb3b76.tar.gz"
+        "url": "https://github.com/mattpocock/skills/archive/c55ee46073ed923f86ce59a5eb3b6d895095d1b7.tar.gz"
+      },
+      "refoundai": {
+        "branch": "main",
+        "hash": "sha256-PxCUeDnTNGg+8IajifBYlG6nneXFsEXhp96g2X9ttAg=",
+        "repository": {
+          "owner": "RefoundAI",
+          "repo": "lenny-skills",
+          "type": "GitHub"
+        },
+        "revision": "13598cc54e09399bc1bc1398b0fca284110efb2f",
+        "submodules": false,
+        "type": "Git",
+        "url": "https://github.com/RefoundAI/lenny-skills/archive/13598cc54e09399bc1bc1398b0fca284110efb2f.tar.gz"
       },
       "vercel": {
         "branch": "main",
-        "hash": "sha256-qD+gGPYjgbArf1Nz5rtlJVCS/2KNTuspag/B079l014=",
+        "hash": "sha256-/B2el3+KYXohGCM4JaHl2EUx1c6mlYdUNrWiE0z/7lA=",
         "repository": {
           "owner": "vercel-labs",
           "repo": "skills",
           "type": "GitHub"
         },
-        "revision": "435076e78988e1e6ec40d00b0b1d76bdbbc5419a",
+        "revision": "7407f3893ad4dceab546ac002c3ef806e4000c73",
         "submodules": false,
         "type": "Git",
-        "url": "https://github.com/vercel-labs/skills/archive/435076e78988e1e6ec40d00b0b1d76bdbbc5419a.tar.gz"
+        "url": "https://github.com/vercel-labs/skills/archive/7407f3893ad4dceab546ac002c3ef806e4000c73.tar.gz"
       }
     },
     "version": 8

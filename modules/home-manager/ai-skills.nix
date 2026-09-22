@@ -31,6 +31,7 @@ in
       "test-driven-development"
       "use-modern-go"
       "firecrawl-build-search"
+      "written-communication"
     ];
     targets.claude.enable = true;
   };
