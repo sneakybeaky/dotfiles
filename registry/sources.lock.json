@@ -138,16 +138,16 @@
     "pins": {
       "addyosmani": {
         "branch": "main",
-        "hash": "sha256-mliEs4QGO3W1vm5i4PfTNXCGtYVNUmEedWVmt5l7sxY=",
+        "hash": "sha256-b3+ZzsukEYdkTlGACKVlofuGsmcP2KIy7fL7fwAAag0=",
         "repository": {
           "owner": "addyosmani",
           "repo": "agent-skills",
           "type": "GitHub"
         },
-        "revision": "dc27a9c2e13721158157632de61b4106c6c2a2a1",
+        "revision": "bcab6a1b8503100e8618c3b4e32cc78de43de769",
         "submodules": false,
         "type": "Git",
-        "url": "https://github.com/addyosmani/agent-skills/archive/dc27a9c2e13721158157632de61b4106c6c2a2a1.tar.gz"
+        "url": "https://github.com/addyosmani/agent-skills/archive/bcab6a1b8503100e8618c3b4e32cc78de43de769.tar.gz"
       },
       "anthropic": {
         "branch": "main",
@@ -164,16 +164,16 @@
       },
       "firecrawl-build": {
         "branch": "main",
-        "hash": "sha256-k/xydZcPAzzUz1+KQupoF9yp8DhrLNU+WZYL+WzsL+Y=",
+        "hash": "sha256-Nqzgs6fr0SsodkZ5RIjlJP5hoM7/eleBwS8boYGgX8Q=",
         "repository": {
           "owner": "firecrawl",
           "repo": "skills",
           "type": "GitHub"
         },
-        "revision": "52c21e61fa0b2662015c41ee353e9f5af6403c16",
+        "revision": "c469b462a22f6a2ea25ce4dca77ce4c4dc8c5d91",
         "submodules": false,
         "type": "Git",
-        "url": "https://github.com/firecrawl/skills/archive/52c21e61fa0b2662015c41ee353e9f5af6403c16.tar.gz"
+        "url": "https://github.com/firecrawl/skills/archive/c469b462a22f6a2ea25ce4dca77ce4c4dc8c5d91.tar.gz"
       },
       "jetbrains": {
         "branch": "main",
