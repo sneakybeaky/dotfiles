@@ -37,15 +37,13 @@ in
     ${getExe config.programs.nono.package} completion fish > $out
   '';
 
-  # Additional AI tools
+  # Additional AI tools (all hosts; personal-only tools live in ai-personal.nix)
   home.packages = [
-    pkgs.llm-agents.crush
     pkgs.claude-monitor
     pkgs.llm-agents.ccusage
     pkgs.llm-agents.agent-browser
     pkgs.llm-agents.skills
     pkgs.llm-agents.herdr
-    pkgs.llm-agents.hermes-agent
   ];
 
 }
