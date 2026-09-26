@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "_1password-shell-plugins": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1790370221,
+        "narHash": "sha256-FzciAxl4S00Pk9gN4kybrJlXDpRIlmlY8JngzfCejh8=",
+        "owner": "1Password",
+        "repo": "shell-plugins",
+        "rev": "ed95acdf098207800231ef8625a3adea1153df35",
+        "type": "github"
+      },
+      "original": {
+        "owner": "1Password",
+        "repo": "shell-plugins",
+        "type": "github"
+      }
+    },
     "agent-skills": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -99,7 +120,7 @@
         "bun2nix": "bun2nix",
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs_2",
-        "systems": "systems",
+        "systems": "systems_2",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -182,6 +203,7 @@
     },
     "root": {
       "inputs": {
+        "_1password-shell-plugins": "_1password-shell-plugins",
         "agent-skills": "agent-skills",
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
@@ -190,6 +212,21 @@
       }
     },
     "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_2": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

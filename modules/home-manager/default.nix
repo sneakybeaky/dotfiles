@@ -22,5 +22,6 @@
 
   # Host-specific modules, imported explicitly by the relevant entrypoint.
   yt-dlp = import ./yt-dlp.nix; # personal (home.nix)
+  _1password-shell-plugins = import ./1password-shell-plugins.nix; # personal (home.nix)
   ai-skills = import ./ai-skills.nix; # work (work.nix)
 }

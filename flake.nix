@@ -27,6 +27,10 @@
     # LLM Agents
     llm-agents.url = "github:numtide/llm-agents.nix";
 
+    # 1Password Shell Plugins (home-manager module)
+    _1password-shell-plugins.url = "github:1Password/shell-plugins";
+    _1password-shell-plugins.inputs.nixpkgs.follows = "nixpkgs";
+
     # Agent Skills
     # Skill repositories are managed via the source registry
     # (registry/sources/*.nix + registry/sources.lock.json) rather than as

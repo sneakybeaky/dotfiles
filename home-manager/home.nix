@@ -9,6 +9,7 @@
   imports = [
     ./common.nix
     inputs.self.homeManagerModules.yt-dlp
+    inputs.self.homeManagerModules._1password-shell-plugins
   ];
 
   home = {
