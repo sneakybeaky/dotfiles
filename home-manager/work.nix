@@ -58,6 +58,10 @@ in
     fish.shellInit = # fish
       ''
         fish_add_path "/Users/jon.barber/Library/Application Support/JetBrains/Toolbox/scripts"
+
+        set -gx LANGFUSE_PUBLIC_KEY (op read "op://Engineering/langfuse - claude-code/PUBLIC_KEY")
+        set -gx LANGFUSE_SECRET_KEY (op read "op://Engineering/langfuse - claude-code/SECRET_KEY")
+        set -gx LANGFUSE_BASE_URL (op read "op://Engineering/langfuse - claude-code/BASE_URL")
       '';
   };
 }
