@@ -18,6 +18,7 @@
     bat = import ./bat.nix;
     fd = import ./fd.nix;
     fonts = import ./fonts.nix;
+    fnox = import ./fnox.nix;
   };
 
   # Host-specific modules, imported explicitly by the relevant entrypoint.
