@@ -13,7 +13,6 @@ in
 {
   imports = [
     ./common.nix
-    inputs.self.homeManagerModules.ai-skills
   ];
 
   home = {
