@@ -32,6 +32,7 @@ in
       "use-modern-go"
       "firecrawl-build-search"
       "written-communication"
+      "learning-opportunities"
     ];
     targets.claude.enable = true;
   };
