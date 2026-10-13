@@ -111,6 +111,20 @@
             type = "app";
             program = self.packages.${system}.sentry.updateScript;
           };
+
+          # Move the Claude Code plugins pinned in
+          # registry/claude-plugins/sources.json to their branch heads;
+          # claude-plugins-check only reports, exiting 1 when any is behind.
+          claude-plugins-check = {
+            type = "app";
+            program = "${pkgs.writeShellScript "claude-plugins-check" ''
+              exec ${(pkgs.callPackage ./registry/claude-plugins { }).updateScript} --check
+            ''}";
+          };
+          claude-plugins-update = {
+            type = "app";
+            program = (pkgs.callPackage ./registry/claude-plugins { }).updateScript;
+          };
         }
       );
 
@@ -149,6 +163,22 @@
               }
               ''
                 bash ${./pkgs/sentry}/tests/update_test.sh
+                touch "$out"
+              '';
+
+          # Acceptance tests for the Claude Code plugin pin updater (no network).
+          claude-plugins-update =
+            pkgs.runCommand "claude-plugins-update-test"
+              {
+                nativeBuildInputs = [
+                  pkgs.bash
+                  pkgs.jq
+                  pkgs.coreutils
+                  pkgs.gnugrep
+                ];
+              }
+              ''
+                bash ${./registry/claude-plugins}/tests/update_test.sh
                 touch "$out"
               '';
 

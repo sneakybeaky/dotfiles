@@ -7,6 +7,10 @@
 
 let
   inherit (lib) getExe;
+
+  # Pinned in registry/claude-plugins/sources.json; refresh with
+  # `task claude-plugins-update`.
+  claudePlugins = (pkgs.callPackage ../../registry/claude-plugins { }).plugins;
 in
 
 {
@@ -16,6 +20,16 @@ in
     package = pkgs.llm-agents.claude-code;
 
     context = ./conf.d/claude/memory.md;
+
+    # Claude Code plugins, loaded via `--plugin-dir` in the claude wrapper.
+    # These are full plugins (commands + MCP servers), not SKILL.md skills, so
+    # they can't go through agent-skills-nix (see ai-skills.nix).
+    plugins = [
+      # Dave Farley's ATDD course (CD.Training). Plugin name is "msec", so the
+      # commands are /msec:atdd-learn, /msec:atdd-build, /msec:atdd-review and
+      # /msec:signin. Also registers the msec-mcp content server.
+      claudePlugins.atdd
+    ];
 
   };
 

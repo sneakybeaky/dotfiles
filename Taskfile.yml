@@ -30,6 +30,7 @@ tasks:
     desc: Update packages
     cmds:
       - task: sentry-update
+      - task: claude-plugins-update
       - nix flake update
       - task: apply
       - task: changed
@@ -38,6 +39,16 @@ tasks:
     desc: Update agent skill revisions in the source registry lock
     cmds:
       - nix run .#skills-sources-lock
+
+  claude-plugins-check:
+    desc: Check whether any pinned Claude Code plugin is behind its branch (exits 1 if so)
+    cmds:
+      - nix run .#claude-plugins-check
+
+  claude-plugins-update:
+    desc: Pin Claude Code plugins in registry/claude-plugins to their latest commits
+    cmds:
+      - nix run .#claude-plugins-update
 
   sentry-check:
     desc: Check whether a newer sentry CLI release exists (exits 1 if so)
