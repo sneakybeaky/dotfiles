@@ -50,7 +50,7 @@ in
     };
     awscli = {
       enable = true;
-      package = pkgs.unstablePkgs.awscli;
+      package = pkgs.unstablePkgs.awscli2;
     };
 
     # Work-specific shell additions, merged with the base config from fish.nix
