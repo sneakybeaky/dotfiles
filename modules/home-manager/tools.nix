@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   ...
 }:
@@ -28,6 +29,8 @@
     unstablePkgs.ngrok
     unstablePkgs.ripgrep
     unstablePkgs.tldr
+    # From the dagger/nix flake input; tracks upstream releases directly.
+    inputs.dagger.packages.${pkgs.stdenv.hostPlatform.system}.dagger
   ];
 
 }

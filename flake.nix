@@ -31,6 +31,10 @@
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
     _1password-shell-plugins.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Dagger CLI (official NUR repo, updated by Dagger's release pipeline)
+    dagger.url = "github:dagger/nix";
+    dagger.inputs.nixpkgs.follows = "nixpkgs";
+
     # Agent Skills
     # Skill repositories are managed via the source registry
     # (registry/sources/*.nix + registry/sources.lock.json) rather than as
