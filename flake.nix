@@ -35,6 +35,12 @@
     dagger.url = "github:dagger/nix";
     dagger.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Herdr UI. Upstream's flake only builds Linux, so it is used on Linux hosts
+    # only; macOS installs the release bundle from pkgs/herdr-gpui instead.
+    # Upstream tracks nixos-unstable, so follow ours rather than stable.
+    herdr-gpui.url = "github:penso/herdr-gpui";
+    herdr-gpui.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     # Agent Skills
     # Skill repositories are managed via the source registry
     # (registry/sources/*.nix + registry/sources.lock.json) rather than as
@@ -116,6 +122,18 @@
             program = self.packages.${system}.sentry.updateScript;
           };
 
+          # Same pattern for the pinned Herdr UI macOS release.
+          herdr-gpui-check = {
+            type = "app";
+            program = "${pkgs.writeShellScript "herdr-gpui-check" ''
+              exec ${self.packages.${system}.herdr-gpui.updateScript} --check
+            ''}";
+          };
+          herdr-gpui-update = {
+            type = "app";
+            program = self.packages.${system}.herdr-gpui.updateScript;
+          };
+
           # Move the Claude Code plugins pinned in
           # registry/claude-plugins/sources.json to their branch heads;
           # claude-plugins-check only reports, exiting 1 when any is behind.
@@ -170,6 +188,22 @@
                 touch "$out"
               '';
 
+          # Acceptance tests for the herdr-gpui release updater (no network).
+          herdr-gpui-update =
+            pkgs.runCommand "herdr-gpui-update-test"
+              {
+                nativeBuildInputs = [
+                  pkgs.bash
+                  pkgs.jq
+                  pkgs.coreutils
+                  pkgs.gnugrep
+                ];
+              }
+              ''
+                bash ${./pkgs/herdr-gpui}/tests/update_test.sh
+                touch "$out"
+              '';
+
           # Acceptance tests for the Claude Code plugin pin updater (no network).
           claude-plugins-update =
             pkgs.runCommand "claude-plugins-update-test"
@@ -207,6 +241,36 @@
                   echo "  got:  $got" >&2
                   exit 1
                 fi
+                touch "$out"
+              '';
+        }
+        # The pinned macOS bundle must be the release the derivation claims, and
+        # its executable must start from the wrapper (--help exits without
+        # launching the GUI).
+        // nixpkgs.lib.optionalAttrs (nixpkgs.lib.hasSuffix "-darwin" system) {
+          herdr-gpui =
+            let
+              herdr-gpui = self.packages.${system}.herdr-gpui;
+            in
+            pkgs.runCommand "herdr-gpui-version-test"
+              {
+                nativeBuildInputs = [
+                  herdr-gpui
+                  pkgs.gnugrep
+                ];
+              }
+              ''
+                export HOME="$(mktemp -d)"
+                plist=${herdr-gpui}/Applications/Herdr.app/Contents/Info.plist
+                got="$(grep -A1 CFBundleShortVersionString "$plist" | grep -o '[0-9][0-9.]*')"
+                want="${herdr-gpui.version}"
+                if [ "$got" != "$want" ]; then
+                  echo "Herdr.app has the wrong version" >&2
+                  echo "  want: $want" >&2
+                  echo "  got:  $got" >&2
+                  exit 1
+                fi
+                herdr-gpui --help >/dev/null
                 touch "$out"
               '';
         }

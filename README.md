@@ -39,6 +39,8 @@ Managed with [go-task](https://taskfile.dev); run `task` to list them.
 | `task update-skills` | Refresh agent skill revisions in the source registry lock |
 | `task sentry-check` | Check for a newer sentry CLI release (exits 1 if one exists) |
 | `task sentry-update` | Pin `pkgs/sentry` to the latest sentry CLI release |
+| `task herdr-gpui-check` | Check for a newer Herdr UI release (exits 1 if one exists) |
+| `task herdr-gpui-update` | Pin `pkgs/herdr-gpui` to the latest Herdr UI release |
 | `task changed` | Show what changed with the last update |
 | `task deps` | Show flake input versions (revisions, dates, nixpkgs release) |
 | `task cache-check` | Show which packages are missing from binary caches |
@@ -64,3 +66,10 @@ file by hand.
 
 The pin is also exposed as `passthru.updateScript`, the nixpkgs convention, so
 `nix-update -F -u sentry` drives the same script.
+
+`pkgs/herdr-gpui` works the same way (`task herdr-gpui-check`,
+`task herdr-gpui-update`) and pins the signed macOS universal `Herdr.app` from
+the GitHub release. Upstream's flake only builds Linux, so Linux hosts get
+Herdr UI from the `herdr-gpui` flake input instead (see
+`modules/home-manager/ai.nix`). The app's in-app updater cannot replace a copy
+in the read-only Nix store; update through the pin.

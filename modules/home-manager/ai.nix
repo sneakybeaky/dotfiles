@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 
@@ -11,6 +12,15 @@ let
   # Pinned in registry/claude-plugins/sources.json; refresh with
   # `task claude-plugins-update`.
   claudePlugins = (pkgs.callPackage ../../registry/claude-plugins { }).plugins;
+
+  # Herdr UI, the GUI client for herdr. Upstream's flake only builds Linux, so
+  # macOS uses the pinned signed release bundle from pkgs/herdr-gpui (refresh
+  # with `task herdr-gpui-update`).
+  herdr-gpui =
+    if pkgs.stdenv.hostPlatform.isDarwin then
+      pkgs.herdr-gpui
+    else
+      inputs.herdr-gpui.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 
 {
@@ -58,6 +68,7 @@ in
     pkgs.llm-agents.agent-browser
     pkgs.llm-agents.skills
     pkgs.llm-agents.herdr
+    herdr-gpui
   ];
 
 }

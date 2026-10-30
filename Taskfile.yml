@@ -30,6 +30,7 @@ tasks:
     desc: Update packages
     cmds:
       - task: sentry-update
+      - task: herdr-gpui-update
       - task: claude-plugins-update
       - nix flake update
       - task: apply
@@ -60,6 +61,20 @@ tasks:
     cmds:
       - nix run .#sentry-update
       - nix build --no-link .#checks.{{.SYSTEM}}.sentry
+    vars:
+      SYSTEM:
+        sh: nix eval --raw --impure --expr builtins.currentSystem
+
+  herdr-gpui-check:
+    desc: Check whether a newer Herdr UI release exists (exits 1 if so)
+    cmds:
+      - nix run .#herdr-gpui-check
+
+  herdr-gpui-update:
+    desc: Pin pkgs/herdr-gpui to the latest Herdr UI release and verify it
+    cmds:
+      - nix run .#herdr-gpui-update
+      - nix build --no-link .#checks.{{.SYSTEM}}.herdr-gpui
     vars:
       SYSTEM:
         sh: nix eval --raw --impure --expr builtins.currentSystem
