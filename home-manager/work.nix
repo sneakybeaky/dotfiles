@@ -56,7 +56,6 @@ in
     # Work-specific shell additions, merged with the base config from fish.nix
     fish.shellInit = # fish
       ''
-        fish_add_path "$HOME/.local/bin"
         fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
       '';
   };
