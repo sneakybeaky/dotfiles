@@ -17,7 +17,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs-unstable (not nixos-unstable): it is gated on Darwin builds, so it
+    # fits these macOS home-manager hosts and usually picks up fixes sooner.
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
@@ -37,7 +39,7 @@
 
     # Herdr UI. Upstream's flake only builds Linux, so it is used on Linux hosts
     # only; macOS installs the release bundle from pkgs/herdr-gpui instead.
-    # Upstream tracks nixos-unstable, so follow ours rather than stable.
+    # Upstream tracks unstable, so follow ours rather than stable.
     herdr-gpui.url = "github:penso/herdr-gpui";
     herdr-gpui.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
