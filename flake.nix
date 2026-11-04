@@ -261,11 +261,11 @@
               }
               ''
                 export HOME="$(mktemp -d)"
-                plist=${herdr-gpui}/Applications/Herdr.app/Contents/Info.plist
+                plist=${herdr-gpui}/Applications/Sheprd.app/Contents/Info.plist
                 got="$(grep -A1 CFBundleShortVersionString "$plist" | grep -o '[0-9][0-9.]*')"
                 want="${herdr-gpui.version}"
                 if [ "$got" != "$want" ]; then
-                  echo "Herdr.app has the wrong version" >&2
+                  echo "Sheprd.app has the wrong version" >&2
                   echo "  want: $want" >&2
                   echo "  got:  $got" >&2
                   exit 1

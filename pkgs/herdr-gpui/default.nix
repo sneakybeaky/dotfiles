@@ -1,5 +1,6 @@
-# Herdr UI (https://herdrui.dev, https://github.com/penso/herdr-gpui): a native
-# GPUI client for the Herdr daemon (pkgs.llm-agents.herdr).
+# Sheprd, formerly Herdr UI (https://sheprd.org,
+# https://github.com/sheprd-labs/sheprd): a native GPUI client for the Herdr
+# daemon (pkgs.llm-agents.herdr). The package keeps its herdr-gpui name.
 #
 # macOS only. Upstream's flake builds the Linux backend from source but not
 # macOS, so on Darwin we install the signed and notarized universal app bundle
@@ -23,7 +24,7 @@ let
   # Shared with update.sh, so there is one source of truth for the version and
   # hash. Release tags are "v<version>".
   pin = lib.importJSON ./sources.json;
-  asset = "herdr-gpui-${pin.version}-macos-universal.app.tar.gz";
+  asset = "sheprd-${pin.version}-macos-universal.app.tar.gz";
 in
 stdenvNoCC.mkDerivation {
   pname = "herdr-gpui";
@@ -34,7 +35,7 @@ stdenvNoCC.mkDerivation {
     inherit (pin) hash;
   };
 
-  # The tarball holds a single Herdr.app at its root.
+  # The tarball holds a single Sheprd.app at its root.
   sourceRoot = ".";
 
   nativeBuildInputs = [ makeWrapper ];
@@ -46,13 +47,13 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
     mkdir -p "$out/Applications"
-    cp -R Herdr.app "$out/Applications/"
+    cp -R Sheprd.app "$out/Applications/"
 
-    # A wrapper rather than a symlink: the app finds herdr-acp,
-    # herdr-automate and herdr-remote-control beside its own executable, so it
-    # has to be exec'd from inside the bundle. Named like upstream's Linux
-    # binary so `herdr-gpui` works the same on every host.
-    makeWrapper "$out/Applications/Herdr.app/Contents/MacOS/Herdr" "$out/bin/herdr-gpui"
+    # A wrapper rather than a symlink: the app finds sheprd-acp,
+    # sheprd-automate and sheprd-remote-control beside its own executable, so
+    # it has to be exec'd from inside the bundle. Kept as `herdr-gpui` so the
+    # command works the same on every host.
+    makeWrapper "$out/Applications/Sheprd.app/Contents/MacOS/sheprd" "$out/bin/herdr-gpui"
     runHook postInstall
   '';
 
@@ -68,7 +69,7 @@ stdenvNoCC.mkDerivation {
 
   meta = {
     description = "Native GPUI client for an existing local Herdr daemon";
-    homepage = "https://herdrui.dev";
+    homepage = "https://sheprd.org";
     downloadPage = "https://github.com/${pin.repo}/releases";
     changelog = "https://github.com/${pin.repo}/releases/tag/v${pin.version}";
     license = lib.licenses.asl20;

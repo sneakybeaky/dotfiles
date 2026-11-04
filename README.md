@@ -68,8 +68,8 @@ The pin is also exposed as `passthru.updateScript`, the nixpkgs convention, so
 `nix-update -F -u sentry` drives the same script.
 
 `pkgs/herdr-gpui` works the same way (`task herdr-gpui-check`,
-`task herdr-gpui-update`) and pins the signed macOS universal `Herdr.app` from
-the GitHub release. Upstream's flake only builds Linux, so Linux hosts get
+`task herdr-gpui-update`) and pins the signed macOS universal `Sheprd.app`
+(formerly Herdr UI) from the `sheprd-labs/sheprd` GitHub release. Upstream's flake only builds Linux, so Linux hosts get
 Herdr UI from the `herdr-gpui` flake input instead (see
 `modules/home-manager/ai.nix`). The app's in-app updater cannot replace a copy
 in the read-only Nix store; update through the pin.

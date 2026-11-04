@@ -73,7 +73,7 @@ fi
 echo "herdr-gpui: $pinned -> $latest"
 
 # Must match the asset and tag naming in default.nix.
-asset="herdr-gpui-$latest-macos-universal.app.tar.gz"
+asset="sheprd-$latest-macos-universal.app.tar.gz"
 url="https://github.com/$repo/releases/download/v$latest/$asset"
 
 printf '  %s ... ' "$asset"

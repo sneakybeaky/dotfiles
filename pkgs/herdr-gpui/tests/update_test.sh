@@ -20,7 +20,7 @@ fail() {
 }
 
 PINNED='{
-  "repo": "penso/herdr-gpui",
+  "repo": "sheprd-labs/sheprd",
   "version": "20261020.1",
   "hash": "sha256-old"
 }'
@@ -125,9 +125,9 @@ update_rewrites_version_and_hash() {
   got="$(jq -S . "$work/sources.json")"
   want="$(jq -S . <<'EOF'
 {
-  "repo": "penso/herdr-gpui",
+  "repo": "sheprd-labs/sheprd",
   "version": "20261028.1",
-  "hash": "sha256-fake-v20261028.1-herdr-gpui-20261028.1-macos-universal.app.tar.gz"
+  "hash": "sha256-fake-v20261028.1-sheprd-20261028.1-macos-universal.app.tar.gz"
 }
 EOF
   )"
