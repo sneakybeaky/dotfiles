@@ -50,7 +50,7 @@ in
     enable = true;
     package = pkgs.llm-agents.nono;
     packs = [
-      "always-further/claude"
+      "nolabs-ai/claude"
     ];
   };
 
