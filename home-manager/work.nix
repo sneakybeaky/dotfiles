@@ -82,6 +82,11 @@ in
           # 1Password SSH agent socket + shell plugin config.
           "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password"
         ];
+        # 1Password SSH agent (ssh auth + op-ssh-sign commit signing). A
+        # read grant doesn't cover connect(2); sockets need their own grant.
+        unix_socket = [
+          "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+        ];
         # These sit under nono's default credential deny groups; lift the
         # deny so the grants above take effect.
         bypass_protection = [
