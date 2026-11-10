@@ -53,10 +53,55 @@ in
       package = pkgs.unstablePkgs.awscli2;
     };
 
+    # Sandbox profile for running Claude on work repos:
+    #   nono run --profile claude-work -- claude
+    # Builds on the nolabs-ai/claude pack (installed by ai.nix). Paths are
+    # expanded by nono at run time.
+    nono.profiles.claude-work = {
+      extends = "nolabs-ai/claude";
+      meta.description = "Claude Code on the work MacBook (risk-ledger repos, mise, gh, ssh, 1Password)";
+
+      # Read+write on the directory nono is launched from (`--allow .`).
+      workdir.access = "readwrite";
+
+      filesystem = {
+        allow = [
+          "$HOME/work/risk-ledger"
+          "$HOME/.local/state/mise"
+          "$HOME/.cache"
+        ];
+        allow_file = [
+          "$HOME/.ssh/known_hosts"
+          "$HOME/.ssh/config"
+          "$HOME/.config/iterm2/cc-status"
+        ];
+        read = [
+          "$HOME/.ssh"
+          "$HOME/.config/gh"
+          "$HOME/.local/share/mise/installs"
+          # 1Password SSH agent socket + shell plugin config.
+          "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password"
+        ];
+        # These sit under nono's default credential deny groups; lift the
+        # deny so the grants above take effect.
+        bypass_protection = [
+          "$HOME/.ssh"
+          "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password"
+        ];
+      };
+    };
+
     # Work-specific shell additions, merged with the base config from fish.nix
     fish.shellInit = # fish
       ''
         fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
       '';
+
+    # `cw [claude args...]` -- Claude in the claude-work nono sandbox.
+    fish.functions.cw = {
+      description = "Run claude in the claude-work nono sandbox";
+      wraps = "claude";
+      body = "nono run --profile claude-work -- claude $argv";
+    };
   };
 }
