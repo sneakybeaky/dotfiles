@@ -76,7 +76,6 @@ in
           "$HOME/.config/iterm2/cc-status"
         ];
         read = [
-          "$HOME/.ssh"
           "$HOME/.config/gh"
           "$HOME/.local/share/mise/installs"
           # 1Password SSH agent socket + shell plugin config.
@@ -88,9 +87,12 @@ in
           "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
         ];
         # These sit under nono's default credential deny groups; lift the
-        # deny so the grants above take effect.
+        # deny so the grants above take effect. Only the two ssh files are
+        # bypassed: the key lives in 1Password, so the rest of ~/.ssh stays
+        # denied.
         bypass_protection = [
-          "$HOME/.ssh"
+          "$HOME/.ssh/known_hosts"
+          "$HOME/.ssh/config"
           "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password"
         ];
       };
