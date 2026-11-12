@@ -71,9 +71,13 @@ in
           "$HOME/.cache"
         ];
         allow_file = [
+          "$HOME/.config/iterm2/cc-status"
+        ];
+        # Read-only: a writable ssh config could add a ProxyCommand that runs
+        # outside the sandbox the next time ssh runs from a normal shell.
+        read_file = [
           "$HOME/.ssh/known_hosts"
           "$HOME/.ssh/config"
-          "$HOME/.config/iterm2/cc-status"
         ];
         read = [
           "$HOME/.config/gh"
