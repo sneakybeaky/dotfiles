@@ -77,6 +77,11 @@ in
       # sandbox needs nothing from ~/.ssh, and ssh itself is blocked while the
       # proxy runs.
       network = {
+        # All of localhost (port 0 = localhost:* on macOS): the rl test
+        # databases, floci on testcontainers' random ports, and the local
+        # stack. This also reaches IDE servers such as GoLand's, which can run
+        # commands outside the sandbox. The proxy otherwise blocks localhost.
+        open_port = [ 0 ];
         credentials = [ "github_git" ];
         custom_credentials.github_git = {
           upstream = "https://github.com";
@@ -104,11 +109,14 @@ in
         cache_ttl_secs = 900;
       };
 
-      # Existing clones use ssh remotes; rewrite them to HTTPS for the proxy.
       environment.set_vars = {
+        # Existing clones use ssh remotes; rewrite them to HTTPS for the proxy.
         GIT_CONFIG_COUNT = "1";
         GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
         GIT_CONFIG_VALUE_0 = "git@github.com:";
+        # Without this, docker looks for its contexts under ~/.docker, which
+        # stays denied.
+        DOCKER_HOST = "unix://$HOME/.docker/run/docker.sock";
       };
 
       filesystem = {
@@ -126,15 +134,21 @@ in
           # 1Password SSH agent socket + shell plugin config.
           "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password"
         ];
-        # 1Password SSH agent, for op-ssh-sign commit signing. A read grant
-        # doesn't cover connect(2); sockets need their own grant.
+        # 1Password SSH agent, for op-ssh-sign commit signing, and the Docker
+        # socket for integration tests and the local stack. A read grant
+        # doesn't cover connect(2); sockets need their own grant. Containers
+        # run outside nono and can mount anything Docker Desktop shares, so
+        # the Docker socket is a way out of the sandbox.
         unix_socket = [
           "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+          "$HOME/.docker/run/docker.sock"
         ];
-        # This sits under nono's default credential deny groups; lift the
-        # deny so the grants above take effect.
+        # These sit under nono's default credential deny groups; lift the
+        # deny so the grants above take effect. Only the Docker socket, so
+        # the rest of ~/.docker (registry credentials) stays denied.
         bypass_protection = [
           "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password"
+          "$HOME/.docker/run/docker.sock"
         ];
       };
     };
@@ -170,15 +184,25 @@ in
         ];
         # Only the agent socket: granting the whole 1Password folder lets the
         # op CLI inside the sandbox reach the 1Password app.
+        # Docker socket for integration tests and the local stack. Only the
+        # socket: the rest of ~/.docker (registry credentials) stays denied.
+        # Containers run outside nono and can mount anything Docker Desktop
+        # shares, so this is a way out of the sandbox.
         unix_socket = [
           "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+          "$HOME/.docker/run/docker.sock"
         ];
         bypass_protection = [
           "$HOME/.ssh/known_hosts"
           "$HOME/.ssh/config"
           "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+          "$HOME/.docker/run/docker.sock"
         ];
       };
+
+      # Without this, docker looks for its contexts under ~/.docker, which
+      # stays denied.
+      environment.set_vars.DOCKER_HOST = "unix://$HOME/.docker/run/docker.sock";
     };
 
     # Work-specific shell additions, merged with the base config from fish.nix
