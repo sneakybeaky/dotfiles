@@ -41,6 +41,14 @@ in
       enable = true;
       package = misePackage;
       enableFishIntegration = true;
+      globalConfig.settings = {
+        experimental = true;
+        # mise can't read gh's keychain token itself; ask gh for it. Covers
+        # private release downloads and rate limits without exporting a token
+        # (an exported MISE_GITHUB_TOKEN would win over this and leak into
+        # sandboxes).
+        github.credential_command = "${pkgs.unstablePkgs.gh}/bin/gh auth token --hostname \"$MISE_CREDENTIAL_HOST\"";
+      };
     };
     direnv = {
       mise = {
